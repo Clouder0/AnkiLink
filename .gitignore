@@ -1,2 +1,4 @@
 log.txt
 src/__pycache__
+build
+AnkiImporter.spec
