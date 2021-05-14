@@ -1,68 +1,6 @@
-import json
 import sys
 import datetime
-import urllib.request
-
-def request(action, **params):
-    return {'action': action, 'params': params, 'version': 6}
-
-def invoke(action, **params):
-    requestJson = json.dumps(request(action, **params)).encode('utf-8')
-    response = json.load(urllib.request.urlopen(urllib.request.Request('http://localhost:8765', requestJson)))
-    if len(response) != 2:
-        raise Exception('response has an unexpected number of fields')
-    if 'error' not in response:
-        raise Exception('response is missing required error field')
-    if 'result' not in response:
-        raise Exception('response is missing required result field')
-    if response['error'] is not None:
-        raise Exception(response['error'])
-    return response['result']
-
-def addQANote(front, back):
-    return invoke('addNote',
-        note = {
-            "deckName": "Export",
-            "modelName": "CBasic",
-            "fields": { "Front": front, "Back": back },
-            "options": {
-                "allowDuplicate": True,
-            "duplicateScope": "deck",
-            "duplicateScopeOptions": { "deckName": "Export", "checkChildren": False }
-            },
-            "tags": ["#Export"]
-        }
-    )
-
-def addChoicesNote(question, options, answer, remark):
-    return invoke('addNote',
-        note = {
-            "deckName": "Export",
-            "modelName": "CChoices",
-            "fields": { "Question": question, "Options": options, "Answer": answer, "Remark": remark },
-            "options": {
-                "allowDuplicate": True,
-            "duplicateScope": "deck",
-            "duplicateScopeOptions": { "deckName": "Export", "checkChildren": False }
-            },
-            "tags": ["#Export"]
-        }
-    )
-
-def addClozeNote(text):
-    return invoke('addNote',
-        note = {
-            "deckName": "Export",
-            "modelName": "CCloze",
-            "fields": { "Text": text },
-            "options": {
-                "allowDuplicate": True,
-            "duplicateScope": "deck",
-            "duplicateScopeOptions": { "deckName": "Export", "checkChildren": False }
-            },
-            "tags": ["#Export"]
-        }
-    )
+from note import addNote,QANote,ClozeNote,ChoicesNote
 
 def replaceBrackets(text, spliter,left,right):
     sub = text.split(spliter)
@@ -86,7 +24,7 @@ def HandleQA(text):
     back = list2str(lines[1:])
     if front == "": return "Blank front text, skipping.\n"
     if back == "": return "Blank back text, skipping.\n"
-    return "Invoke successfully, return code:{}\n".format(addQANote(front,back))
+    return "Invoke successfully, return code:{}\n".format(addNote(QANote(front,back)))
 
 def list2str(list,l = '<div>', r = '</div>',removeFirst = True):
     output = ""
@@ -116,7 +54,7 @@ def HandleChoices(text):
         i += 1
     else: return "Error! Choices with no answer.\n"
     if i < len(lines): remark = list2str(lines[i:])
-    return "Invoke successfully, return code:{}\n".format(addChoicesNote(question,options,answer,remark))
+    return "Invoke successfully, return code:{}\n".format(addNote(ChoicesNote(question,options,answer,remark)))
 
 def HandleCloze(text):
     sub = text.split("**")
@@ -128,7 +66,7 @@ def HandleCloze(text):
             output = output + '{{c' + str(((i + 1) // 2)) + '::' + sub[i] + '}}'
         else: output = output + sub[i]
     output = output.replace('\n','<br>')
-    return "Invoke successfully, return code:{}\n".format(addClozeNote(output))
+    return "Invoke successfully, return code:{}\n".format(addNote(ClozeNote(output)))
 
  
 def HandleNote(text):
@@ -156,7 +94,7 @@ def HandlePost(text):
     f.close()
 
 if len(sys.argv) < 2: 
-    print("Please provide a param: python.py filename.md")
+    print("Please provide a param: python AnkiImporter.py filename.md")
     exit()
 path = sys.argv[1]
 print("path: " + path)
