@@ -1,8 +1,8 @@
 Choices are supported, that is:  
 A something like this
 B.can be this too
-C,options
-D]following...
+C options
+D following...
 A
 some remark here
 
