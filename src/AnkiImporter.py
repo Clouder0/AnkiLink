@@ -11,36 +11,36 @@ def replaceBrackets(text, spliter,left,right):
         else: output = output + sub[i]
     return output
     
-def formatText(text):
+def formatText(text, linebreak = True):
     text = replaceBrackets(text,"**","<b>","</b>")
-    text = list2str([x.strip() for x in text.splitlines()], '', '\n',False)
-    print(text)
+    text = replaceBrackets(text,'$','\\(','\\)')
+    text = list2str([x.strip() for x in text.splitlines()], '', '\n')
+    text = text.strip()
+    if linebreak:
+        text = text.replace("\n","<br>")
     return text
 
+def list2str(list,l = '<div>', r = '</div>'):
+    output = ""
+    for x in list:
+        output = output + l + x + r
+    return output
+
+
+# TODO refactor this mess to be object-oriented
 def HandleQA(text):
-    text = formatText(text)
     lines = text.splitlines(keepends = False)
     front = lines[0]
     back = list2str(lines[1:])
     if front == "": return "Blank front text, skipping.\n"
     if back == "": return "Blank back text, skipping.\n"
+    front = formatText(front)
+    back = formatText(back)
     return "Invoke successfully, return code:{}\n".format(addNote(QANote(front,back)))
 
-def list2str(list,l = '<div>', r = '</div>',removeFirst = True):
-    output = ""
-    first = True
-    for x in list:
-        if first == True and removeFirst == True:
-            output = x
-            first = False
-        else:
-            output = output + l + x + r
-    return output
-
 def HandleChoices(text):
-    text = formatText(text)
     lines = text.split("\n")
-    question = lines[0]
+    question = formatText(lines[0])
     options = list()
     remark = ""
     i = 1
@@ -48,12 +48,14 @@ def HandleChoices(text):
         if lines[i][0] != chr(65 + i - 1): break
         options.append(lines[i].strip())
         i += 1
-    options = list2str(options)
+    if len(options) <= 1: return "Error! Choices with only one option.\n"
+    options = options[0] + list2str(options[1:])
+    options = formatText(options)
     if i < len(lines): 
         answer = list2str([x for x in lines[i] if ord(x) >= 65 and ord(x) <= 90],'','')
         i += 1
     else: return "Error! Choices with no answer.\n"
-    if i < len(lines): remark = list2str(lines[i:])
+    if i < len(lines): remark = formatText(list2str(lines[i:]))
     return "Invoke successfully, return code:{}\n".format(addNote(ChoicesNote(question,options,answer,remark)))
 
 def HandleCloze(text):
@@ -65,7 +67,7 @@ def HandleCloze(text):
         if(i % 2 == 1):
             output = output + '{{c' + str(((i + 1) // 2)) + '::' + sub[i] + '}}'
         else: output = output + sub[i]
-    output = output.replace('\n','<br>')
+    output = formatText(output)
     return "Invoke successfully, return code:{}\n".format(addNote(ClozeNote(output)))
 
  
@@ -73,12 +75,11 @@ def HandleNote(text):
     if type(text) != str: return "not string type!\n"
     if "  - " in text: return "found Outline Structure, skipping.\n"
     if "|" in text: return "found Table Structure, skipping.\n"
-    text = replaceBrackets(text,'$','\\(','\\)')
     lines = text.splitlines(keepends = False)
     if len(lines) == 0: return "Blank text, skipping.\n"
     if "**" in lines[0]:  
         HandleCloze(text)
-    elif len(lines) >= 3 and len(lines[1]) >= 2 and lines[1][:2] == "A ":
+    elif len(lines) >= 3 and len(lines[1]) >= 2 and lines[1][0] == "A":
         return HandleChoices(text)
     elif len(lines) >= 2:
         return HandleQA(text)
@@ -95,7 +96,7 @@ def HandlePost(text):
 
 if len(sys.argv) < 2: 
     print("Please provide a param: python AnkiImporter.py filename.md")
-    exit()
+    sys.exit()
 path = sys.argv[1]
 print("path: " + path)
 f = open(path,"r",encoding = "utf-8")
