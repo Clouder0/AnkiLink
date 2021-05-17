@@ -17,3 +17,13 @@ def invoke(action, **params):
     if response['error'] is not None:
         raise Exception(response['error'])
     return response['result']
+
+def addNote(target):
+    return invoke('addNote', note = {
+            "deckName": target.deckName,
+            "modelName": target.modelName,
+            "fields": target.fields,
+            "options": target.options,
+            "tags": target.tags
+        }
+    )
