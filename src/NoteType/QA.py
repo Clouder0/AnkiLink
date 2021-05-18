@@ -14,7 +14,7 @@ def get(text):
         raise Exception("Not QA format.")
     lines = text.splitlines(keepends=False)
     front = lines[0]
-    back = list2str(lines[1:])
+    back = list2str(lines[1:], '', '\n')
     if front == "":
         raise Exception("Blank front text, skipping.")
     if back == "":
