@@ -5,8 +5,6 @@ from NoteType import QA, Choices, Cloze
  
 def HandleNote(text):
     if type(text) != str: return "not string type!\n"
-    if "  - " in text: return "found Outline Structure, skipping.\n"
-    if "|" in text: return "found Table Structure, skipping.\n"
     lines = text.splitlines(keepends = False)
     if len(lines) == 0: return "Blank text, skipping.\n"
     try:
