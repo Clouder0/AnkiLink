@@ -1,17 +1,18 @@
 from note import Note
-from lib.formatHelper import formatText,list2str
+from lib.formatHelper import list2str
 
 class ChoicesNote(Note):
     def __init__(self, question, options, answer, remark, _deckName="Export", _modelName="CChoices",  _options={"allowDuplicate": True}, _tags=("#Export",)):
-        super().__init__(_deckName, _modelName, {"Question": question, "Options": options, "Answer": answer, "Remark": remark}, _options, _tags)
+        super().__init__(_deckName, _modelName, {
+            "Question": question, "Options": options, "Answer": answer, "Remark": remark}, _options, _tags)
+        self.outputfields["Options"] = self.fields["Options"] #special fix for Choices
 
-def check(text):
-    lines = text.splitlines()
+def check(lines):
     return len(lines) >= 3 and lines[1][0] == 'A'
 
 def get(text):
     lines = text.split("\n")
-    question = formatText(lines[0])
+    question = lines[0]
     options = list()
     remark = ""
     i = 1
@@ -20,11 +21,10 @@ def get(text):
         options.append(lines[i].strip())
         i += 1
     if len(options) <= 1: raise Exception("Error! Choices with only one option.")
-    options = options[0] + list2str(options[1:])
-    options = formatText(options)
-    if i < len(lines): 
+    options = options[0] + list2str(options[1:], "<div>", "</div>", removeSuffix = False)
+    if i < len(lines):
         answer = list2str([x for x in lines[i] if ord(x) >= 65 and ord(x) <= 90],'','')
         i += 1
     else: raise Exception("Error! Choices with no answer.")
-    if i < len(lines): remark = formatText(list2str(lines[i:]))
+    if i < len(lines): remark = list2str(lines[i:])
     return ChoicesNote(question, options, answer, remark)

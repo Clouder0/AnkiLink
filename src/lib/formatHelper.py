@@ -1,11 +1,22 @@
-import os
-
-def check_library(lib_name, auto_install = True):
-    if lib_name not in os.popen('python -m pip list').read() and auto_install:
-            os.system('python -m pip install {}'.format(lib_name))
-
-check_library('markdown2')
 import markdown2
+
+def markdown2html(text):
+    #fix for standard markdown line-break
+    text = list2str(list = [x.rstrip() for x in text.splitlines()])
+
+    text = markdown2.markdown(
+        text, extras=['footnotes', 'tables', 'task_list', 'numbering'])
+
+    text = text.removeprefix("<p>").removesuffix("</p>\n")
+
+    return text
+
+def linestrip(text,l = True, r = True):
+    lines = text.splitlines()
+    for x in lines:
+        if l: x = x.lstrip()
+        if r: x = x.rstrip()
+    return list2str(lines)
 
 def replaceBrackets(text, spliter,left,right):
     sub = text.split(spliter)
@@ -16,25 +27,20 @@ def replaceBrackets(text, spliter,left,right):
         else: output = output + sub[i]
     return output
 
-def list2str(list,l = '<div>', r = '</div>'):
+def list2str(list, l='', r='\n',removeSuffix = True):
     output = ""
     for x in list:
         output = output + l + x + r
-    return output.strip(' \n')
-
-def remove_front(text, string):
-    if len(text) >= len(string) and text[0 : len(string)] == string:
-        return text[len(string) : len(text)]
-    return text
-        
-def remove_back(text, string):
-    if len(text) >= len(string) and text[len(text) - len(string) : len(text)] == string:
-        return text[0 : len(text) - len(string)]
-    return text
+    if removeSuffix: output = output.removesuffix(r)
+    return output
 
 def formatText(text):
     lines = [x.rstrip() for x in text.splitlines()]
+
+    if len(lines) <= 0: return "" 
+
     text = lines[0]
+    #add line-break for list and table
     for i in range(1, len(lines)):
         if '- ' not in lines[i - 1] and '- ' in lines[i]:
             text = text + '\n\n' + lines[i]
@@ -45,8 +51,7 @@ def formatText(text):
         '|' in lines[i + 1]:
             text = text + '\n\n' + lines[i]
         else: text = text + '\n' + lines[i]
-    text = text.strip()
-    text = markdown2.markdown(text, extras = ['footnotes', 'tables', 'task_list', 'numbering'])
-    text = remove_front(text, '<p>')
-    text = remove_back(text, '</p>\n')
-    return replaceBrackets(text,'$','\\(','\\)')
+
+    text = markdown2html(text)
+    text = replaceBrackets(text,'$','\\(','\\)')
+    return text

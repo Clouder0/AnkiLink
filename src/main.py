@@ -1,6 +1,7 @@
 import sys
 import datetime
 from NoteType import QA, Choices, Cloze
+from lib.ankiConnectHelper import addNote
 
  
 def HandleNote(text):
@@ -9,12 +10,12 @@ def HandleNote(text):
     if len(lines) == 0: return "Blank text, skipping.\n"
     try:
         ret = "Recognized as {}, invoke successfully with return code {}\n"
-        if Cloze.check(text):
-            return ret.format("Cloze",Cloze.get(text).add())
-        elif Choices.check(text):
-            return ret.format("Choices",Choices.get(text).add())
-        elif QA.check(text):
-            return ret.format("QA",QA.get(text).add())
+        if Cloze.check(lines):
+            return ret.format("Cloze", addNote(Cloze.get(text)))
+        elif Choices.check(lines):
+            return ret.format("Choices", addNote(Choices.get(text)))
+        elif QA.check(lines):
+            return ret.format("QA", addNote(QA.get(text)))
         return "Unmatching any format.\n"
     except Exception as e:
         return "Error! Exception:{}\n".format(e)
@@ -22,7 +23,7 @@ def HandleNote(text):
 def HandlePost(text):
     if type(text) != str: raise Exception("A string is required!")
     notes = text.split("\n\n")
-    f = open("log.txt","a+",encoding = "utf-8")
+    f = open("log.txt", "a+", encoding="utf-8")
     f.write("\n" + datetime.datetime.now().strftime("%c") + "\n")
     for note in notes:
         f.write(HandleNote(note))

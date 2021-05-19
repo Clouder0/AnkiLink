@@ -1,12 +1,11 @@
 from note import Note
-from lib.formatHelper import formatText
 
 class ClozeNote(Note):
     def __init__(self, text, _deckName="Export", _modelName="CCloze",  _options={"allowDuplicate": True}, _tags=("#Export",)):
         super().__init__(_deckName, _modelName, {"Text": text}, _options, _tags)
 
-def check(text):
-    return "**" in text.splitlines()[0]
+def check(lines):
+    return "**" in lines[0]
 
 def get(text):
     sub = text.split("**")
@@ -17,5 +16,4 @@ def get(text):
         if(i % 2 == 1):
             output = output + '{{c' + str(((i + 1) // 2)) + '::' + sub[i] + '}}'
         else: output = output + sub[i]
-    output = formatText(output)
     return ClozeNote(output)

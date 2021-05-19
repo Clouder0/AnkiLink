@@ -4,3 +4,4 @@ src/NoteType/__pycache__/**
 src/lib/__pycache__/**
 build/**
 dist/**
+test.py

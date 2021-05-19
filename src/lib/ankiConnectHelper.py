@@ -22,7 +22,7 @@ def addNote(target):
     return invoke('addNote', note = {
             "deckName": target.deckName,
             "modelName": target.modelName,
-            "fields": target.fields,
+            "fields": target.outputfields,
             "options": target.options,
             "tags": target.tags
         }
