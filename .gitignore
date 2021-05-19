@@ -2,4 +2,5 @@ log.txt
 src/__pycache__/**
 src/NoteType/__pycache__/**
 src/lib/__pycache__/**
-build
+build/**
+dist/**
