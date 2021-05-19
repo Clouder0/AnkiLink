@@ -3,9 +3,9 @@ import os
 def check_library(lib_name, auto_install = True):
     if lib_name not in os.popen('python -m pip list').read() and auto_install:
             os.system('python -m pip install {}'.format(lib_name))
-    exec('import {}'.format(lib_name))
 
 check_library('markdown2')
+import markdown2
 
 def replaceBrackets(text, spliter,left,right):
     sub = text.split(spliter)
