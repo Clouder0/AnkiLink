@@ -1,6 +1,6 @@
 import sys
 import datetime
-from NoteType import QA, Choices, Cloze
+from NoteType import QA, Choices, Cloze, ListCloze, TableCloze
 from lib.ankiConnectHelper import addNote
 
  
@@ -14,6 +14,10 @@ def HandleNote(text):
             return ret.format("Cloze", addNote(Cloze.get(text)))
         elif Choices.check(lines):
             return ret.format("Choices", addNote(Choices.get(text)))
+        elif ListCloze.check(lines):
+            return ret.format("List Cloze", addNote(ListCloze.get(text)))
+        elif TableCloze.check(lines):
+            return ret.format("Table Cloze", addNote(TableCloze.get(text)))
         elif QA.check(lines):
             return ret.format("QA", addNote(QA.get(text)))
         return "Unmatching any format.\n"

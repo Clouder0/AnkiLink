@@ -9,3 +9,6 @@ being the answer.
 
 It's interesting.
 Currently, **Bold** parsing is supported.
+
+Inline html is supported, so if you want to make a multiple line question, you can use <br> test
+interesting.
