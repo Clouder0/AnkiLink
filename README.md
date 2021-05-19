@@ -4,6 +4,24 @@ AnkiImporter enables you to import Anki notes directly from your plain text file
 
 There are tons of Anki Importers in the world, while this one features minimalism.
 
+Features:
+
+- Directly Import into Anki
+- Human-Friendly Syntax
+- Markdown Rendering Support
+- Html Support
+- Cross-Platform
+- Binary Build available
+- Many Useful built-in Note Types:
+    - Q&A
+    - Cloze
+    - Choices
+    - ListCloze
+    - TableCloze
+- Easy to Extend
+
+---
+
 To use this tool, you are not required to sacrifice your note readability for compatibility with Anki.
 
 Here is a quick example:
@@ -15,6 +33,13 @@ This is an answer.
 Single line question.
 Multiple line answer.
 The first line of this block is recognized as the question.
+
+Multiple line question is <br> possible somehow.
+too hacky maybe.
+
+markdown rendering is supported.
+  - use a list!
+      - or something like that.
 
 Clozes are **easy** to **create** too.
 ```
@@ -62,7 +87,7 @@ This is a command-line tool.
 On windows, open `cmd` and execute with:  
 `{yourpath}\AnkiImporter.exe {yourfile}`  
 Alternatively, if you use the raw script, execute with:
-`python {yourpath}\AnkiImporter.py {yourfile}`  
+`python {yourpath}\src\main.py {yourfile}`  
 
 The process is similar on other platforms.
 
@@ -71,6 +96,8 @@ The process is similar on other platforms.
 The note to import must follow some specific structure so that it can be recognized by the script.
 
 A block is recognized as a note. To clarify what a block is, see the example:
+
+It is notable that Html syntax is supported in notes.
 
 ```markdown
 This is a block.
@@ -139,6 +166,49 @@ AB
 
 I just want a simple Q&A.
  A simple Q&A. Use space to avoid being recognized as Choices.
+```
+
+#### ListCloze
+
+A list would be recognized as a cloze.
+
+```markdown
+
+- List Cloze
+  - Cloze **as** a list
+  - no need to contain a cloze in the first line
+      - pretty **handy**
+      - but remember this may make a card huge!
+
+Example List QA
+- A list, or an outlined format, are now supported.
+  - SHJKD
+  - lksfdhos
+  - sdhfksaj
+      - dskf
+	  - sdkf
+	      - dfjs
+	      - dfjs
+	  - oipw3
+  - dppp
+```
+
+#### TableCloze
+
+A table would be recognized as a cloze.
+
+```markdown
+Table is now supported too.
+| Syntax      | Description | Test Text     |
+| :---        |    :----:   |          ---: |
+| Header      | Title       | Here's this   |
+| Paragraph   | Text        | And more      |
+A funny feature.
+
+| Table      | Cloze | is also supported |
+| :---        |    :----:   |          ---: |
+| H**e**ader      | Title       | Here's this   |
+| Parag**ra**ph   | Text        | And more      |
 ```
 
 ---

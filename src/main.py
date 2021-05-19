@@ -10,6 +10,7 @@ def HandleNote(text):
     if len(lines) == 0: return "Blank text, skipping.\n"
     try:
         ret = "Recognized as {}, invoke successfully with return code {}\n"
+        #TODO dynamic importing for add-ons
         if Cloze.check(lines):
             return ret.format("Cloze", addNote(Cloze.get(text)))
         elif Choices.check(lines):
