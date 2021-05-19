@@ -144,20 +144,3 @@ I just want a simple Q&A.
 ---
 
 For more examples, see [tests](https://github.com/Clouder0/AnkiImporter/tree/main/tests).
-
-#### Skipping
-
-Some specific blocks should not be identified as a note, to name a few, tables, lists, or something like that.
-
-Any block with `  - ` would be recognized as a list and be skipped.
-
-Any block with `|` would be recognized as a table and be skipped.
-
-This should be configurable. #TODO#
-
-```markdown
-- list
-  - list
-
-|Table|
-```
