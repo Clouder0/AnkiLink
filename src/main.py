@@ -23,7 +23,11 @@ def HandleNote(text):
             return ret.format("QA", addNote(QA.get(text)))
         return "Unmatching any format.\n"
     except Exception as e:
-        return "Error! Exception:{}\n".format(e)
+        return """Error! Exception:{}
+details: 
+    class:{}
+    cause:{}
+    context:{}\n""".format(e, e.__class__,e.__cause__,e.__context__)
 
 def HandlePost(text):
     if type(text) != str: raise Exception("A string is required!")

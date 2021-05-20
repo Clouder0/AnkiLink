@@ -1,5 +1,7 @@
 # AnkiImporter
 
+[![build binary](https://github.com/Clouder0/AnkiImporter/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/Clouder0/AnkiImporter/actions/workflows/build.yml)
+
 AnkiImporter enables you to import Anki notes directly from your plain text files. It is simple, easy to use yet not that powerful. 
 
 There are tons of Anki Importers in the world, while this one features minimalism.

@@ -21,7 +21,7 @@ def get(text):
         options.append(lines[i].strip())
         i += 1
     if len(options) <= 1: raise Exception("Error! Choices with only one option.")
-    options = options[0] + list2str(options[1:], "<div>", "</div>", removeSuffix = False)
+    options = options[0] + list2str(options[1:], "<div>", "</div>", keepsuffix = True)
     if i < len(lines):
         answer = list2str([x for x in lines[i] if ord(x) >= 65 and ord(x) <= 90],'','')
         i += 1

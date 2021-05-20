@@ -1,5 +1,14 @@
 import markdown2
 
+#python version is 3.7, so str.removesuffix/prefix is not supported.
+def removeSuffix(text,suffix):
+    if text.endswith(suffix) == False: return text
+    return text[:len(text) - len(suffix)]
+
+def removePrefix(text,prefix):
+    if text.startswith(prefix) == False: return text
+    return text[len(prefix):]
+
 def markdown2html(text):
     #fix for standard markdown line-break
     #if a line is a part of a table, remove the space in the end for proper rendering
@@ -8,7 +17,7 @@ def markdown2html(text):
     text = markdown2.markdown(
         text, extras=['footnotes', 'tables', 'task_list', 'numbering'])
 
-    text = text.removeprefix("<p>").removesuffix("</p>\n")
+    text = removeSuffix(removePrefix(text,"<p>"),"</p>\n")
 
     return text
 
@@ -28,11 +37,11 @@ def replaceBrackets(text, spliter,left,right):
         else: output = output + sub[i]
     return output
 
-def list2str(list, l='', r='\n',removeSuffix = True):
+def list2str(list, l='', r='\n',keepsuffix = False):
     output = ""
     for x in list:
         output = output + l + x + r
-    if removeSuffix: output = output.removesuffix(r)
+    if keepsuffix == False: output = removeSuffix(output,r)
     return output
 
 def formatText(text):
