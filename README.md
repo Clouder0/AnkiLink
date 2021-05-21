@@ -1,6 +1,12 @@
-# AnkiImporter
+[![Release][release-shield]][release-url]
+[![MIT License][license-shield]][license-url]
+[![Issues][issues-shield]][issues-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Forks][forks-shield]][forks-url]
+[![Contributors][contributors-shield]][contributors-url]
 
-[![build binary](https://github.com/Clouder0/AnkiImporter/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/Clouder0/AnkiImporter/actions/workflows/build.yml)
+# AnkiImporter
+## Introduction
 
 AnkiImporter enables you to import Anki notes directly from your plain text files. It is simple, easy to use yet not that powerful. 
 
@@ -40,8 +46,8 @@ Multiple line question is <br> possible somehow.
 too hacky maybe.
 
 markdown rendering is supported.
-  - use a list!
-      - or something like that.
+- use a list!
+    - or something like that.
 
 Clozes are **easy** to **create** too.
 ```
@@ -216,3 +222,27 @@ A funny feature.
 ---
 
 For more examples, see [tests](https://github.com/Clouder0/AnkiImporter/tree/main/tests).
+
+## Credit
+
+- [anki](https://github.com/ankitects/anki)
+- [anki-connect](https://github.com/FooSoft/anki-connect)
+- [markdown2](https://github.com/trentm/python-markdown2)
+
+## License
+
+The source code is licensed under GPL v3.   
+License is available [here](https://github.com/Clouder0/AnkiImporter/blob/main/LICENSE).
+
+[contributors-shield]: https://img.shields.io/github/contributors/Clouder0/AnkiImporter.svg?style=for-the-badge
+[contributors-url]: https://github.com/Clouder0/AnkiImporter/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Clouder0/AnkiImporter.svg?style=for-the-badge
+[forks-url]: https://github.com/Clouder0/AnkiImporter/network/members
+[stars-shield]: https://img.shields.io/github/stars/Clouder0/AnkiImporter.svg?style=for-the-badge
+[stars-url]: https://github.com/Clouder0/AnkiImporter/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Clouder0/AnkiImporter.svg?style=for-the-badge
+[issues-url]: https://github.com/Clouder0/AnkiImporter/issues
+[license-shield]: https://img.shields.io/github/license/Clouder0/AnkiImporter.svg?style=for-the-badge
+[license-url]: https://github.com/Clouder0/AnkiImporter/blob/main/LICENSE.txt
+[release-shield]: https://img.shields.io/github/release/Clouder0/AnkiImporter.svg?style=for-the-badge
+[release-url]: https://github.com/siyuan-note/siyuan/releases
