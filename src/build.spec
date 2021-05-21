@@ -4,7 +4,7 @@
 block_cipher = None
 
 
-a = Analysis(['main.py'],
+a = Analysis(['__main__.py'],
              pathex=['C:\\Users\\Clouder\\Documents\\AnkiImporter'],
              binaries=[],
              datas=[],
