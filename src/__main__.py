@@ -5,6 +5,7 @@ sys.path.append(".")
 sys.path.append("./src")
 sys.path.append("..")
 
+import config
 from NoteType import *
 from lib.ankiConnectHelper import addNote
  
@@ -16,15 +17,20 @@ def HandleNote(text):
         ret = "Recognized as {}, invoke successfully with return code {}\n"
         #TODO dynamic importing for add-ons
         if Cloze.check(lines):
-            return ret.format("Cloze", addNote(Cloze.get(text)))
+            return ret.format("Cloze", addNote(Cloze.get(text,
+                   deckName=config.deck_name, tags=config.tags)))
         elif Choices.check(lines):
-            return ret.format("Choices", addNote(Choices.get(text)))
+            return ret.format("Choices", addNote(Choices.get(text,
+                   deckName=config.deck_name, tags=config.tags)))
         elif ListCloze.check(lines):
-            return ret.format("List Cloze", addNote(ListCloze.get(text)))
+            return ret.format("List Cloze", addNote(ListCloze.get(text,
+                   deckName=config.deck_name, tags=config.tags)))
         elif TableCloze.check(lines):
-            return ret.format("Table Cloze", addNote(TableCloze.get(text)))
+            return ret.format("Table Cloze", addNote(TableCloze.get(text,
+                   deckName=config.deck_name, tags=config.tags)))
         elif QA.check(lines):
-            return ret.format("QA", addNote(QA.get(text)))
+            return ret.format("QA", addNote(QA.get(text,
+                   deckName=config.deck_name, tags=config.tags)))
         return "Unmatching any format.\n"
     except Exception as e:
         return """Error! Exception:{}

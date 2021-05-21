@@ -8,7 +8,7 @@ class QANote(Note):
 def check(lines):
     return len(lines) >= 2
 
-def get(text):
+def get(text, deckName, tags):
     if check(text) == False:
         raise Exception("Not QA format.")
     lines = text.splitlines()
@@ -16,4 +16,4 @@ def get(text):
     back = list2str(lines[1:], '', '\n')
     if front == "": raise Exception("Blank front text, skipping.")
     if back == "": raise Exception("Blank back text, skipping.")
-    return QANote(front, back)
+    return QANote(front, back, _deckName = deckName, _tags = tags)
