@@ -6,32 +6,35 @@ sys.path.append("./src")
 sys.path.append("..")
 
 import config
-from NoteType import *
-from lib.ankiConnectHelper import addNote
+from NoteType import Cloze,Choices,ListCloze,TableCloze,QA
+from helper.ankiConnectHelper import addNotes
+from helper.genankiHelper import getDeck,exportDeck
  
-def HandleNote(text):
+def HandleNote(text,noteList):
     if type(text) != str: return "not string type!\n"
     lines = text.splitlines(keepends = False)
     if len(lines) == 0: return "Blank text, skipping.\n"
     try:
-        ret = "Recognized as {}, invoke successfully with return code {}\n"
+        ret = "Recognized as {}\n"
+        rec = False
         #TODO dynamic importing for add-ons
         if Cloze.check(lines):
-            return ret.format("Cloze", addNote(Cloze.get(text,
-                   deckName=config.deck_name, tags=config.tags)))
+            ret = ret.format("Cloze")
+            noteList.append(Cloze.get(text, tags=config.tags))
         elif Choices.check(lines):
-            return ret.format("Choices", addNote(Choices.get(text,
-                   deckName=config.deck_name, tags=config.tags)))
+            ret = ret.format("Cloze")
+            noteList.append(Choices.get(text, tags=config.tags))
         elif ListCloze.check(lines):
-            return ret.format("List Cloze", addNote(ListCloze.get(text,
-                   deckName=config.deck_name, tags=config.tags)))
+            ret = ret.format("List Cloze")
+            noteList.append(ListCloze.get(text, tags=config.tags))
         elif TableCloze.check(lines):
-            return ret.format("Table Cloze", addNote(TableCloze.get(text,
-                   deckName=config.deck_name, tags=config.tags)))
+            ret = ret.format("Table Cloze")
+            noteList.append(TableCloze.get(text, tags=config.tags))
         elif QA.check(lines):
-            return ret.format("QA", addNote(QA.get(text,
-                   deckName=config.deck_name, tags=config.tags)))
-        return "Unmatching any format.\n"
+            ret = ret.format("QA")
+            noteList.append(QA.get(text, tags=config.tags))
+        else: return "Unmatching any format.\n"
+        return ret
     except Exception as e:
         return """Error! Exception:{}
 details: 
@@ -44,21 +47,31 @@ def HandlePost(text):
     notes = text.split("\n\n")
     f = open("log.txt", "a+", encoding="utf-8")
     f.write("\n" + datetime.datetime.now().strftime("%c") + "\n")
+    noteList = []
     for note in notes:
-        f.write(HandleNote(note))
+        f.write(HandleNote(note,noteList))
     f.close()
+    return noteList
 
 def main():
-    #hack for proper importing
-    if len(sys.argv) < 2: 
-        print("Please provide a param: python AnkiImporter.py filename.md")
-        sys.exit()
-    path = sys.argv[1]
-    print("path: " + path)
-    f = open(path,"r",encoding = "utf-8")
-    HandlePost(f.read())
-    f.close()
-    print("Done.")
+    print("Starting...")
+    #TODO dynamic initialize
+    QA.init()
+    Cloze.init()
+    Choices.init()
+    noteLists = []
+    for file in config.file_list:
+        print("file: " + file)
+        f = open(file, "r", encoding="utf-8")
+        noteList = HandlePost(f.read())
+        f.close()
+        noteLists += noteList
+        print("Done.")
+    if config.output == "":
+        addNotes(noteLists, config.deck_name)
+    else: 
+        exportDeck(getDeck(config.deck_name,noteLists),config.output)
+    print("All done.")
 
 if __name__ == "__main__":
     main()

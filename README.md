@@ -227,6 +227,7 @@ For more examples, see [tests](https://github.com/Clouder0/AnkiImporter/tree/mai
 
 - [anki](https://github.com/ankitects/anki)
 - [anki-connect](https://github.com/FooSoft/anki-connect)
+- [genanki](https://github.com/kerrickstaley/genanki)
 - [markdown2](https://github.com/trentm/python-markdown2)
 
 ## License

@@ -15,7 +15,7 @@ def markdown2html(text):
     text = list2str(list = [x.rstrip() if "|" in x else x.rstrip() + "  " for x in text.splitlines()])
 
     text = markdown2.markdown(
-        text, extras=['footnotes', 'tables', 'task_list', 'numbering'])
+        text, extras=["footnotes", "tables", "task_list", "numbering"])
 
     text = removeSuffix(removePrefix(text,"<p>"),"</p>\n")
 
@@ -37,7 +37,7 @@ def replaceBrackets(text, spliter,left,right):
         else: output = output + sub[i]
     return output
 
-def list2str(list, l='', r='\n',keepsuffix = False):
+def list2str(list, l="", r="\n",keepsuffix = False):
     output = ""
     for x in list:
         output = output + l + x + r
@@ -53,15 +53,15 @@ def formatText(text):
     inList,inTable = False,False
 
     text = ""
-    # table start tweak. if a table starts from the first line, it won't be rendered as an empty line is added at first
+    # table start tweak. if a table starts from the first line, it won"t be rendered as an empty line is added at first
     if inTable == False and "|" in lines[0] and 1 < len(lines) and "|" in lines[1] and "-" in lines[1]: #table start
         text = text + "\n"
         inTable = True
     text = lines[0]
 
     for i in range(1, len(lines)):
-        if inTable == False and inList == False and '- ' not in lines[i - 1] and '- ' in lines[i]: #list start
-            text = text + '\n'
+        if inTable == False and inList == False and "- " not in lines[i - 1] and "- " in lines[i]: #list start
+            text = text + "\n"
             inList = True
         if inList and "- " not in lines[i]: #list end
             text = text + "\n"
@@ -72,8 +72,8 @@ def formatText(text):
         if inTable and "|" not in lines[i]:
             text = text + "\n"
             inTable = False
-        text = text + '\n' + lines[i]
+        text = text + "\n" + lines[i]
 
     text = markdown2html(text)
-    text = replaceBrackets(text,'$','\\(','\\)')
+    text = replaceBrackets(text,"$","\\(","\\)")
     return text

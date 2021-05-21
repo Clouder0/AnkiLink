@@ -1,19 +1,60 @@
+import helper.ankiConnectHelper
 from note import Note
-
-class ClozeNote(Note):
-    def __init__(self, text, _deckName="Export", _modelName="CCloze",  _options={"allowDuplicate": True}, _tags=("#Export",)):
-        super().__init__(_deckName, _modelName, {"Text": text}, _options, _tags)
+from model import Model
 
 def check(lines):
     return "**" in lines[0]
 
-def get(text, deckName, tags):
+def get(text, tags):
     sub = text.split("**")
     output = ""
     if len(sub) == 0: raise Exception("Invalid Cloze format, skipping.")
     # odd indexes are clozes
     for i in range(0,len(sub)):
         if(i % 2 == 1):
-            output = output + '{{c' + str(((i + 1) // 2)) + '::' + sub[i] + '}}'
+            output = output + "{{c" + str(((i + 1) // 2)) + "::" + sub[i] + "}}"
         else: output = output + sub[i]
-    return ClozeNote(output, _deckName = deckName, _tags = tags)
+    return ClozeNote(output, _tags = tags)
+
+CSS=""".card {
+  font-family: arial;
+  font-size: 20px;
+  text-align: left;
+  color: black;
+  background-color: white;
+}
+
+.cloze {
+ font-weight: bold;
+ color: blue;
+}
+.nightMode .cloze {
+ color: lightblue;
+}
+"""
+
+MODELNAME = "DCloze"
+MODELID = 1145141920
+
+ClozeModel = Model(
+    modelId = MODELID,
+    modelName = MODELNAME,
+    isCloze = 1,
+    fields=["Text","Back Extra"],
+    templates=[
+        {
+            "Name": "Cloze",
+            "Front": "{{cloze:Text}}",
+            "Back": "{{cloze:Text}}",
+        }
+    ],
+    css=CSS
+)
+
+class ClozeNote(Note):
+    def __init__(self, text, model=ClozeModel,  _tags=("#Export",)):
+        super().__init__(model, {"Text": text, "Back Extra": ""}, _tags)
+
+def init():
+    if MODELNAME not in helper.ankiConnectHelper.getModelNamesAndIds().keys():
+        helper.ankiConnectHelper.createModel(ClozeModel)

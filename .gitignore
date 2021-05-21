@@ -1,7 +1,9 @@
 log.txt
 src/__pycache__/**
 src/NoteType/__pycache__/**
-src/lib/__pycache__/**
+src/helper/__pycache__/**
 build/**
 dist/**
 test.py
+env/**
+test.apkg

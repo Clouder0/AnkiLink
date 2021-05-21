@@ -1,15 +1,7 @@
-from .Cloze import ClozeNote
+from .Cloze import get as cget
 
 def check(lines):
     return lines[0].startswith("- ")
 
-def get(text, deckName, tags):
-    sub = text.split("**")
-    output = ""
-    if len(sub) == 0: raise Exception("Invalid List Cloze format, skipping.")
-    # odd indexes are clozes
-    for i in range(0,len(sub)):
-        if(i % 2 == 1):
-            output = output + '{{c' + str(((i + 1) // 2)) + '::' + sub[i] + '}}'
-        else: output = output + sub[i]
-    return ClozeNote(output, _deckName = deckName, _tags = tags)
+def get(text, tags):
+    return cget(text,tags)

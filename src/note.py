@@ -1,14 +1,12 @@
-from lib.formatHelper import formatText
+from helper.formatHelper import formatText
 
 class Note:
-    def __init__(self, deckName="Export", modelName="CBasic", fields={}, options={"allowDuplicate": True}, tags=("#Export")):
-        self.deckName = deckName
-        self.modelName = modelName
+    def __init__(self, model, fields={}, tags=("#Export")):
+        self.model = model
         self.fields = fields
         self.outputfields = self.fields.copy()
         for x in self.outputfields.keys():
             self.outputfields[x] = formatText(self.outputfields[x])
-        self.options = options
         self.tags = tags
 
     def __getitem__(self,key):
