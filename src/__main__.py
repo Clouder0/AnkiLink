@@ -1,8 +1,12 @@
-import sys
-import datetime
-from NoteType import QA, Choices, Cloze, ListCloze, TableCloze
-from lib.ankiConnectHelper import addNote
+import sys,datetime
 
+#dirty hand tweak for proper importing...
+sys.path.append(".")
+sys.path.append("./src")
+sys.path.append("..")
+
+from NoteType import *
+from lib.ankiConnectHelper import addNote
  
 def HandleNote(text):
     if type(text) != str: return "not string type!\n"
@@ -38,12 +42,17 @@ def HandlePost(text):
         f.write(HandleNote(note))
     f.close()
 
-if len(sys.argv) < 2: 
-    print("Please provide a param: python AnkiImporter.py filename.md")
-    sys.exit()
-path = sys.argv[1]
-print("path: " + path)
-f = open(path,"r",encoding = "utf-8")
-HandlePost(f.read())
-f.close()
-print("Done.")
+def main():
+    #hack for proper importing
+    if len(sys.argv) < 2: 
+        print("Please provide a param: python AnkiImporter.py filename.md")
+        sys.exit()
+    path = sys.argv[1]
+    print("path: " + path)
+    f = open(path,"r",encoding = "utf-8")
+    HandlePost(f.read())
+    f.close()
+    print("Done.")
+
+if __name__ == "__main__":
+    main()

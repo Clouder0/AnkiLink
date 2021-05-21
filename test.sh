@@ -1,5 +1,5 @@
-python src/main.py tests/test1.md
-python src/main.py tests/test2.md
-python src/main.py tests/test3.md
-python src/main.py tests/test4.md
-python src/main.py tests/test5.md
+python -m src tests/test1.md
+python -m src tests/test2.md
+python -m src tests/test3.md
+python -m src tests/test4.md
+python -m src tests/test5.md
