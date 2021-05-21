@@ -7,7 +7,7 @@ class ClozeNote(Note):
 def check(lines):
     return "**" in lines[0]
 
-def get(text):
+def get(text, deckName, tags):
     sub = text.split("**")
     output = ""
     if len(sub) == 0: raise Exception("Invalid Cloze format, skipping.")
@@ -16,4 +16,4 @@ def get(text):
         if(i % 2 == 1):
             output = output + '{{c' + str(((i + 1) // 2)) + '::' + sub[i] + '}}'
         else: output = output + sub[i]
-    return ClozeNote(output)
+    return ClozeNote(output, _deckName = deckName, _tags = tags)

@@ -5,7 +5,8 @@ sys.path.append(".")
 sys.path.append("./src")
 sys.path.append("..")
 
-import NoteType
+import config
+from NoteType import *
 from lib.ankiConnectHelper import addNote
  
 def HandleNote(text):
@@ -15,16 +16,21 @@ def HandleNote(text):
     try:
         ret = "Recognized as {}, invoke successfully with return code {}\n"
         #TODO dynamic importing for add-ons
-        if NoteType.Cloze.check(lines):
-            return ret.format("Cloze", addNote(NoteType.Cloze.get(text)))
-        elif NoteType.Choices.check(lines):
-            return ret.format("Choices", addNote(NoteType.Choices.get(text)))
-        elif NoteType.ListCloze.check(lines):
-            return ret.format("List Cloze", addNote(NoteType.ListCloze.get(text)))
-        elif NoteType.TableCloze.check(lines):
-            return ret.format("Table Cloze", addNote(NoteType.TableCloze.get(text)))
-        elif NoteType.QA.check(lines):
-            return ret.format("QA", addNote(NoteType.QA.get(text)))
+        if Cloze.check(lines):
+            return ret.format("Cloze", addNote(Cloze.get(text,
+                   deckName=config.deck_name, tags=config.tags)))
+        elif Choices.check(lines):
+            return ret.format("Choices", addNote(Choices.get(text,
+                   deckName=config.deck_name, tags=config.tags)))
+        elif ListCloze.check(lines):
+            return ret.format("List Cloze", addNote(ListCloze.get(text,
+                   deckName=config.deck_name, tags=config.tags)))
+        elif TableCloze.check(lines):
+            return ret.format("Table Cloze", addNote(TableCloze.get(text,
+                   deckName=config.deck_name, tags=config.tags)))
+        elif QA.check(lines):
+            return ret.format("QA", addNote(QA.get(text,
+                   deckName=config.deck_name, tags=config.tags)))
         return "Unmatching any format.\n"
     except Exception as e:
         return """Error! Exception:{}

@@ -1,14 +1,14 @@
 Example List QA
 - A list, or an outlined format, are now supported.
-  - SHJKD
-  - lksfdhos
-  - sdhfksaj
-      - dskf
-	  - sdkf
-	      - dfjs
-	      - dfjs
-	  - oipw3
-  - dppp
+- Use at least 3 spaces to indent.
+- Just like:
+- sdhfksaj
+   - dskf
+   - sdkf
+      - dfjs
+	  - ldh123
+- oipw3
+   - dppp
 
 List in question is not supported yet.
 as a question can only contain one line.

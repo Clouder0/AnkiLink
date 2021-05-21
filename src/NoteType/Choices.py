@@ -10,7 +10,7 @@ class ChoicesNote(Note):
 def check(lines):
     return len(lines) >= 3 and lines[1][0] == 'A'
 
-def get(text):
+def get(text, deckName, tags):
     lines = text.split("\n")
     question = lines[0]
     options = list()
@@ -27,4 +27,4 @@ def get(text):
         i += 1
     else: raise Exception("Error! Choices with no answer.")
     if i < len(lines): remark = list2str(lines[i:])
-    return ChoicesNote(question, options, answer, remark)
+    return ChoicesNote(question, options, answer, remark, _deckName = deckName, _tags = tags)
