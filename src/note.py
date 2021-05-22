@@ -9,11 +9,11 @@ class Note:
             self.outputfields[x] = formatText(self.outputfields[x])
         self.tags = tags
 
-    def __getitem__(self,key):
+    def __getitem__(self, key):
         if key not in self.fields:
             raise KeyError
         return self.fields[key]
 
-    def __setitem__(self,key,value):
+    def __setitem__(self, key, value):
         self.fields[key] = value
         self.outputfields[key] = formatText(value)

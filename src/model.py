@@ -1,10 +1,13 @@
 import helper.genankiHelper
 
+
 class Model:
-    def __init__(self,modelName,css,modelId=None,fields=[],templates=[],isCloze=0):
+    def __init__(self, modelName, css, modelId=None, fields=[], templates=[], isCloze=0):
         self.modelName = modelName
-        if modelId == None: self.modelId = helper.genankiHelper.getIdfromStr(modelName)
-        else: self.modelId = modelId
+        if modelId is None:
+            self.modelId = helper.genankiHelper.getIdfromStr(modelName)
+        else:
+            self.modelId = modelId
         self.fields = fields
         self.templates = templates
         self.isCloze = isCloze

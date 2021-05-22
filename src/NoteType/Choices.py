@@ -1,12 +1,14 @@
 import helper.ankiConnectHelper
-from helper.formatHelper import list2str,formatText
+from helper.formatHelper import list2str, formatText
 from helper.genankiHelper import getIdfromStr
 import genanki
 from note import Note
 from model import Model
 
+
 def check(lines):
     return len(lines) >= 3 and lines[1][0] == "A"
+
 
 def get(text, tags):
     lines = text.split("\n")
@@ -15,22 +17,29 @@ def get(text, tags):
     remark = ""
     i = 1
     while i < len(lines):
-        if lines[i][0] != chr(65 + i - 1): break
+        if lines[i][0] != chr(65 + i - 1):
+            break
         options.append(formatText(lines[i].strip()))
         i += 1
-    if len(options) <= 1: raise Exception("Error! Choices with only one option.")
-    options = options[0] + list2str(options[1:], "<div>", "</div>", keepsuffix = True)
+    if len(options) <= 1:
+        raise Exception("Error! Choices with only one option.")
+    options = options[0] + \
+        list2str(options[1:], "<div>", "</div>", keepsuffix=True)
     if i < len(lines):
-        answer = list2str([x for x in lines[i] if ord(x) >= 65 and ord(x) <= 90],"","")
+        answer = list2str([x for x in lines[i] if ord(x)
+                          >= 65 and ord(x) <= 90], "", "")
         i += 1
-    else: raise Exception("Error! Choices with no answer.")
-    if i < len(lines): remark = list2str(lines[i:])
+    else:
+        raise Exception("Error! Choices with no answer.")
+    if i < len(lines):
+        remark = list2str(lines[i:])
     question = formatText(question)
     answer = formatText(answer)
     remark = formatText(remark)
-    return ChoicesNote(question, options, answer, remark, _tags = tags)
+    return ChoicesNote(question, options, answer, remark, _tags=tags)
 
-FRONT="""<!--tuxzz.20201115.v0.r0-->
+
+FRONT = """<!--tuxzz.20201115.v0.r0-->
 <div id="classifyBox" class="classify"><span id="classifyText"></span><span>：</span></div>
 <div id="questionBox" class="text">{{Question}}</div>
 
@@ -191,7 +200,7 @@ submitButton.onclick = onSubmit;
 </script>
 """
 
-BACK="""<!--tuxzz.20201115.v0.r0-->
+BACK = """<!--tuxzz.20201115.v0.r0-->
 <div id="classifyBox" class="classify"><span id="classifyText"></span><span>：</span></div>
 <div id="questionBox" class="text">{{Question}}</div>
 
@@ -352,7 +361,7 @@ onSubmit()
 </script>
 """
 
-CSS="""<style>
+CSS = """<style>
 .card {
   font-family: sans;
 }
@@ -437,22 +446,26 @@ MODELID = 1145141919
 
 ChoicesModel = Model(
     modelId=MODELID,
-    modelName = MODELNAME,
-    fields=["Question","Options","Answer","Remark"],
+    modelName=MODELNAME,
+    fields=["Question", "Options", "Answer", "Remark"],
     templates=[
         {
-            "Name":"Card 1",
-            "Front":FRONT,
-            "Back":BACK
+            "Name": "Card 1",
+            "Front": FRONT,
+            "Back": BACK
         }
     ],
     css=CSS
 )
+
+
 class ChoicesNote(Note):
-    def __init__(self, question, options, answer, remark, model = ChoicesModel, _tags=("#Export",)):
+    def __init__(self, question, options, answer, remark, model=ChoicesModel, _tags=("#Export",)):
         super().__init__(model, {
             "Question": question, "Options": options, "Answer": answer, "Remark": remark}, _tags)
-        self.outputfields["Options"] = self.fields["Options"] #special fix for Choices
+        # special fix for Choices
+        self.outputfields["Options"] = self.fields["Options"]
+
 
 def init():
     if MODELNAME not in helper.ankiConnectHelper.getModelNamesAndIds().keys():

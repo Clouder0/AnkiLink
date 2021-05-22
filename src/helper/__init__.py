@@ -1,2 +1,2 @@
 
-__all__ = ["ankiConnectHelper","formatHelper"]
+__all__ = ["ankiConnectHelper", "formatHelper"]

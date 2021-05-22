@@ -1,8 +1,10 @@
 import urllib.request
 import json
 
+
 def request(action, **params):
     return {"action": action, "params": params, "version": 6}
+
 
 def invoke(action, **params):
     requestJson = json.dumps(request(action, **params)).encode("utf-8")
@@ -18,7 +20,8 @@ def invoke(action, **params):
         raise Exception(response["error"])
     return response["result"]
 
-def addNote(target,deck,options={"allowDuplicate": True}):
+
+def addNote(target, deck, options={"allowDuplicate": True}):
     invoke("addNote", note={
         "deckName": deck,
         "modelName": target.model.modelName,
@@ -28,18 +31,21 @@ def addNote(target,deck,options={"allowDuplicate": True}):
     }
     )
 
+
 def getModelNamesAndIds():
     return invoke("modelNamesAndIds")
 
-def createModel(model):
-    return invoke("createModel", 
-        modelName = model.modelName,
-        inOrderFields = model.fields,
-        css = model.css,
-        isCloze = model.isCloze,
-        cardTemplates = model.templates
-    )
 
-def addNotes(notes,deck,options={"allowDuplicate": True}):
+def createModel(model):
+    return invoke("createModel",
+                  modelName=model.modelName,
+                  inOrderFields=model.fields,
+                  css=model.css,
+                  isCloze=model.isCloze,
+                  cardTemplates=model.templates
+                  )
+
+
+def addNotes(notes, deck, options={"allowDuplicate": True}):
     for x in notes:
-        addNote(x,deck,options)
+        addNote(x, deck, options)
