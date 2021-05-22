@@ -14,6 +14,7 @@ def getModel(mymodel):
         templates=[{"name": x["Name"], "qfmt":x["Front"], "afmt":x["Back"]}
                    for x in mymodel.templates],
         model_type=mymodel.isCloze,
+        css=mymodel.css
     )
 
 
