@@ -1,5 +1,4 @@
 import sys
-import config
 import datetime
 
 # dirty hand tweak for proper importing...
@@ -10,6 +9,7 @@ sys.path.append("..")
 from NoteType import Cloze, Choices, ListCloze, TableCloze, QA
 from helper.genankiHelper import getDeck, exportDeck
 from helper.ankiConnectHelper import addNotes
+import config
 
 
 def HandleNote(text: str, noteList: list):

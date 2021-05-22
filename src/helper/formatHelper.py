@@ -58,15 +58,9 @@ def list2str(target, left="", right="\n", keepsuffix=False):
     return output
 
 
-def formatText(text):
-    lines = [x.rstrip() for x in text.splitlines()]
-
-    if len(lines) <= 0:
-        return ""
-
+def lineTweaks(lines: list) -> str:
     # add line-break for list and table
     inList, inTable = False, False
-
     text = ""
     # table start tweak. if a table starts from the first line,
     # #it won"t be rendered as an empty line is added at first
@@ -77,25 +71,46 @@ def formatText(text):
         inTable = True
     text = lines[0]
 
+    def isListStart(index: int) -> bool:
+        return not inTable and not inList and \
+            "- " not in lines[index - 1] and "- " in lines[index]
+
+    def isListEnd(index: int) -> bool:
+        return inList and "- " not in lines[index]
+
+    def isTableStart(index: int) -> bool:
+        return not inTable and "|" in lines[index] and index + 1 < len(lines)\
+            and "|" in lines[index + 1] and "-" in lines[index + 1]
+
+    def isTableEnd(index: int) -> bool:
+        return inTable and "|" not in lines[index]
+
     for i in range(1, len(lines)):
         # list start
-        if not inTable and not inList and \
-                "- " not in lines[i - 1] and "- " in lines[i]:
+        if isListStart(i):
             text = text + "\n"
             inList = True
-        if inList and "- " not in lines[i]:  # list end
+        elif isListEnd(i):
             text = text + "\n"
             inList = False
-        # table start
-        if not inTable and "|" in lines[i] and i + 1 < len(lines) \
-                and "|" in lines[i + 1] and "-" in lines[i + 1]:
+        elif isTableStart(i):
             text = text + "\n"
             inTable = True
-        if inTable and "|" not in lines[i]:
+        elif isTableEnd(i):
             text = text + "\n"
             inTable = False
         text = text + "\n" + lines[i]
 
+    return text
+
+
+def formatText(text):
+    lines = [x.rstrip() for x in text.splitlines()]
+
+    if len(lines) <= 0:
+        return ""
+
+    text = lineTweaks(lines)  # tweak for tables and lists
     text = markdown2html(text)
     text = replaceBrackets(text, "$", "\\(", "\\)")
     return text
