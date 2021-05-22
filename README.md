@@ -4,6 +4,7 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Forks][forks-shield]][forks-url]
 [![Contributors][contributors-shield]][contributors-url]
+[![CodeFactor][codefactor-shield]][codefactor-url]
 
 # AnkiImporter
 ## Introduction
@@ -15,6 +16,7 @@ There are tons of Anki Importers in the world, while this one features minimalis
 Features:
 
 - Directly Import into Anki
+- Directly Export to `apkg` file
 - Human-Friendly Syntax
 - Markdown Rendering Support
 - Html Support
@@ -79,7 +81,7 @@ This step is necessary because several Note Types are included in the deck.
 It will create an `Export` Deck in your Anki profile, plus a tag `#Export`.   
 By default, all cards imported by this tool would go into `Export` Deck with the tag `Export`, you can later modify them manually.  
 
-This would be configurable later. #TODO#
+Also, it is configurable through command-line params, like `./AnkiImporter test.md --tags tag1 tag2 --deck targetDeck`
 
 [Download](https://github.com/Clouder0/AnkiImporter/blob/main/tests/ExampleDeck.apkg) and import it into your Anki.
 
@@ -95,9 +97,20 @@ This is a command-line tool.
 On windows, open `cmd` and execute with:  
 `{yourpath}\AnkiImporter.exe {yourfile}`  
 Alternatively, if you use the raw script, execute with:
-`python {yourpath}\src\main.py {yourfile}`  
+`python -m {yourpath}\src {yourfile}`  
 
 The process is similar on other platforms.
+
+For more usage, enter `.\AnkiImporter -h` or something like that to see.
+
+### Export to apkg file
+
+If you want to export your notes to an apkg file, you can use `-o filename` param.
+
+For example, generate an apkg file from `test2.md`:  
+```
+python -m src tests/test2.md -o test.apkg
+```
 
 ## Note Structure
 
@@ -235,15 +248,17 @@ For more examples, see [tests](https://github.com/Clouder0/AnkiImporter/tree/mai
 The source code is licensed under GPL v3.   
 License is available [here](https://github.com/Clouder0/AnkiImporter/blob/main/LICENSE).
 
-[contributors-shield]: https://img.shields.io/github/contributors/Clouder0/AnkiImporter.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/Clouder0/AnkiImporter.svg
 [contributors-url]: https://github.com/Clouder0/AnkiImporter/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/Clouder0/AnkiImporter.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/Clouder0/AnkiImporter.svg
 [forks-url]: https://github.com/Clouder0/AnkiImporter/network/members
-[stars-shield]: https://img.shields.io/github/stars/Clouder0/AnkiImporter.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/Clouder0/AnkiImporter.svg
 [stars-url]: https://github.com/Clouder0/AnkiImporter/stargazers
-[issues-shield]: https://img.shields.io/github/issues/Clouder0/AnkiImporter.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/Clouder0/AnkiImporter.svg
 [issues-url]: https://github.com/Clouder0/AnkiImporter/issues
-[license-shield]: https://img.shields.io/github/license/Clouder0/AnkiImporter.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/Clouder0/AnkiImporter.svg
 [license-url]: https://github.com/Clouder0/AnkiImporter/blob/main/LICENSE.txt
-[release-shield]: https://img.shields.io/github/release/Clouder0/AnkiImporter.svg?style=for-the-badge
+[release-shield]: https://img.shields.io/github/release/Clouder0/AnkiImporter.svg
 [release-url]: https://github.com/siyuan-note/siyuan/releases
+[codefactor-shield]: https://www.codefactor.io/repository/github/clouder0/ankiimporter/badge/main
+[codefactor-url]: https://www.codefactor.io/repository/github/clouder0/ankiimporter/overview/main
