@@ -59,10 +59,6 @@ def HandlePost(text):
 
 def main():
     print("Starting...")
-    # TODO dynamic initialize
-    QA.init()
-    Cloze.init()
-    Choices.init()
     noteLists = []
     for file in config.file_list:
         print("file: " + file)

@@ -26,8 +26,7 @@ def get(text, tags):
     options = options[0] + \
         list2str(options[1:], "<div>", "</div>", keepsuffix=True)
     if i < len(lines):
-        answer = list2str([x for x in lines[i] if ord(x)
-                          >= 65 and ord(x) <= 90], "", "")
+        answer = list2str([x for x in lines[i] if ord(x) >= 65 and ord(x) <= 90], "", "")
         i += 1
     else:
         raise Exception("Error! Choices with no answer.")
@@ -444,7 +443,7 @@ div {
 MODELNAME = "DChoices"
 MODELID = 1145141919
 
-ChoicesModel = Model(
+_model = Model(
     modelId=MODELID,
     modelName=MODELNAME,
     fields=["Question", "Options", "Answer", "Remark"],
@@ -460,13 +459,8 @@ ChoicesModel = Model(
 
 
 class ChoicesNote(Note):
-    def __init__(self, question, options, answer, remark, model=ChoicesModel, _tags=("#Export",)):
+    def __init__(self, question, options, answer, remark, model=_model, _tags=("#Export",)):
         super().__init__(model, {
             "Question": question, "Options": options, "Answer": answer, "Remark": remark}, _tags)
         # special fix for Choices
         self.outputfields["Options"] = self.fields["Options"]
-
-
-def init():
-    if MODELNAME not in helper.ankiConnectHelper.getModelNamesAndIds().keys():
-        helper.ankiConnectHelper.createModel(ChoicesModel)

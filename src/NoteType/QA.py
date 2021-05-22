@@ -39,7 +39,7 @@ CSS = """.card {
 MODELNAME = "DBasic"
 MODELID = 1145141921
 
-QAModel = Model(
+_model = Model(
     modelId=MODELID,
     modelName=MODELNAME,
     fields=["Front", "Back"],
@@ -55,10 +55,5 @@ QAModel = Model(
 
 
 class QANote(Note):
-    def __init__(self, front, back, model=QAModel, _tags=("#Export",)):
+    def __init__(self, front, back, model=_model, _tags=("#Export",)):
         super().__init__(model, {"Front": front, "Back": back}, _tags)
-
-
-def init():
-    if MODELNAME not in helper.ankiConnectHelper.getModelNamesAndIds().keys():
-        helper.ankiConnectHelper.createModel(QAModel)

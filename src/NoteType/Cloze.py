@@ -42,7 +42,7 @@ CSS = """.card {
 MODELNAME = "DCloze"
 MODELID = 1145141920
 
-ClozeModel = Model(
+_model = Model(
     modelId=MODELID,
     modelName=MODELNAME,
     isCloze=1,
@@ -59,10 +59,5 @@ ClozeModel = Model(
 
 
 class ClozeNote(Note):
-    def __init__(self, text, model=ClozeModel, _tags=("#Export",)):
+    def __init__(self, text, model=_model, _tags=("#Export",)):
         super().__init__(model, {"Text": text, "Back Extra": ""}, _tags)
-
-
-def init():
-    if MODELNAME not in helper.ankiConnectHelper.getModelNamesAndIds().keys():
-        helper.ankiConnectHelper.createModel(ClozeModel)

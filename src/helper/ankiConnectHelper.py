@@ -21,15 +21,22 @@ def invoke(action, **params):
     return response["result"]
 
 
-def addNote(target, deck, options={"allowDuplicate": True}):
-    invoke("addNote", note={
-        "deckName": deck,
-        "modelName": target.model.modelName,
-        "fields": target.outputfields,
-        "options": options,
-        "tags": target.tags
-    }
-    )
+def addNote(target, deck, options={"allowDuplicate": True}, retry=True):
+    try:
+        invoke("addNote", note={
+            "deckName": deck,
+            "modelName": target.model.modelName,
+            "fields": target.outputfields,
+            "options": options,
+            "tags": target.tags
+        }
+        )
+    except Exception as e:
+        if len(e.args) > 0 and "model" in e.args[0] and \
+                target.model.modelName not in getModelNamesAndIds().keys():
+            createModel(target.model)
+            if retry:
+                addNote(target, deck, options, False)
 
 
 def getModelNamesAndIds():
