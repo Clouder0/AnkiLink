@@ -1,6 +1,6 @@
 import argparse
 
-version_name = "1.1.0"
+version_name = "2.0.0"
 deck_name = "Export"
 tags = ["#Export"]
 file_list = []
