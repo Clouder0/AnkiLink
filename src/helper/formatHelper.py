@@ -22,7 +22,7 @@ def markdown2html(text):
                      else x.rstrip() + "  " for x in text.splitlines()])
 
     text = markdown2.markdown(
-        text, extras=["footnotes", "tables", "task_list", "numbering"])
+        text, extras=["footnotes", "tables", "task_list", "numbering", "code-friendly"])
 
     text = removeSuffix(removePrefix(text, "<p>"), "</p>\n")
 
