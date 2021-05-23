@@ -2,6 +2,14 @@ import urllib.request
 import json
 
 
+def checkOnline():
+    try:
+        getDeckNames()
+    except Exception:
+        return False
+    return True
+
+
 def request(action, **params):
     return {"action": action, "params": params, "version": 6}
 
@@ -23,7 +31,7 @@ def invoke(action, **params):
 
 def addNote(target, deck, options={"allowDuplicate": True}, retry=True):
     try:
-        invoke("addNote", note={
+        return invoke("addNote", note={
             "deckName": deck,
             "modelName": target.model.modelName,
             "fields": target.outputfields,
@@ -32,15 +40,26 @@ def addNote(target, deck, options={"allowDuplicate": True}, retry=True):
         }
         )
     except Exception as e:
-        if len(e.args) > 0 and "model" in e.args[0] and \
-                target.model.modelName not in getModelNamesAndIds().keys():
+        if len(e.args) == 0:
+            return e
+        if "model" in e.args[0] and target.model.modelName not in getModelNamesAndIds().keys():
             createModel(target.model)
-            if retry:
-                addNote(target, deck, options, False)
+        elif "deck was not found" in e.args[0] and deck not in getDeckNames():
+            createDeck(deck)
+        if retry:
+            return addNote(target, deck, options, False)
+
+
+def createDeck(deckName):
+    return invoke("createDeck", deck=deckName)
 
 
 def getModelNamesAndIds():
     return invoke("modelNamesAndIds")
+
+
+def getDeckNames():
+    return invoke("deckNames")
 
 
 def createModel(model):

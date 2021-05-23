@@ -8,7 +8,7 @@ sys.path.append("..")
 
 from NoteType import Cloze, Choices, ListCloze, TableCloze, QA
 from helper.genankiHelper import getDeck, exportDeck
-from helper.ankiConnectHelper import addNotes
+from helper.ankiConnectHelper import addNotes, checkOnline
 import config
 
 
@@ -60,6 +60,9 @@ def HandlePost(text):
 def main():
     print("Starting...")
     noteLists = []
+    if config.output == "" and not checkOnline():  # import into Anki
+        print("ERROR: failed to connect with Anki Connect.")
+        sys.exit()
     for file in config.file_list:
         print("file: " + file)
         f = open(file, "r", encoding="utf-8")
