@@ -19,7 +19,7 @@ AnkiImporter 能将你的 markdown 语法文本导入到 Anki 中。
 特色：
 
 - 通过 AnkiConnect 直接导入 Anki
-- 导出为 `apkg` 文件
+- 导出为 `apkg` 文件，无需打开 Anki
 - 可读性佳的语法
 - 支持 Markdown 渲染
 - 支持 Html 语法
@@ -261,6 +261,6 @@ License is available [here](https://github.com/Clouder0/AnkiImporter/blob/main/L
 [license-shield]: https://img.shields.io/github/license/Clouder0/AnkiImporter.svg
 [license-url]: https://github.com/Clouder0/AnkiImporter/blob/main/LICENSE.txt
 [release-shield]: https://img.shields.io/github/release/Clouder0/AnkiImporter.svg
-[release-url]: https://github.com/siyuan-note/siyuan/releases
+[release-url]: https://github.com/Clouder0/AnkiImporter/releases
 [codefactor-shield]: https://www.codefactor.io/repository/github/clouder0/ankiimporter/badge/main
 [codefactor-url]: https://www.codefactor.io/repository/github/clouder0/ankiimporter/overview/main

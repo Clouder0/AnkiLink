@@ -17,7 +17,7 @@ There are tons of Anki Importers in the world, while this one features minimalis
 Features:
 
 - Directly Import into Anki
-- Directly Export to `apkg` file
+- Directly Export to `apkg` file without Anki
 - Human-Friendly Syntax
 - Markdown Rendering Support
 - Html Support
@@ -260,6 +260,6 @@ License is available [here](https://github.com/Clouder0/AnkiImporter/blob/main/L
 [license-shield]: https://img.shields.io/github/license/Clouder0/AnkiImporter.svg
 [license-url]: https://github.com/Clouder0/AnkiImporter/blob/main/LICENSE.txt
 [release-shield]: https://img.shields.io/github/release/Clouder0/AnkiImporter.svg
-[release-url]: https://github.com/siyuan-note/siyuan/releases
+[release-url]: https://github.com/Clouder0/AnkiImporter/releases
 [codefactor-shield]: https://www.codefactor.io/repository/github/clouder0/ankiimporter/badge/main
 [codefactor-url]: https://www.codefactor.io/repository/github/clouder0/ankiimporter/overview/main
