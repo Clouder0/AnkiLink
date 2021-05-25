@@ -237,6 +237,14 @@ A funny feature.
 
 For more examples, see [tests](https://github.com/Clouder0/AnkiImporter/tree/main/tests).
 
+## Alternatives
+
+Tons of AnkiImporters out there. Here are some alternatives, some of which may suit your need.
+
+- [apy](https://github.com/lervag/apy): need to install Anki source, directly write to Anki database without opening Anki or importing apkg into Anki. Linux-friendly.
+- [Anki-Import](https://github.com/sdondley/Anki-Import): similar syntax with my AnkiImporter but too many linebreaks. Lack of markdown support. Haven't been updated for years.
+- [inka](https://github.com/lazy-void/inka): a powerful tool, and the most similar one with mine. I would probably not start this project if I had discovered it earlier! we are developing in different directions though.
+
 ## Credit
 
 - [anki](https://github.com/ankitects/anki)
