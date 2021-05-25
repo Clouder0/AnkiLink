@@ -3,7 +3,7 @@ import markdown2
 # python version is 3.7, so str.removesuffix/prefix is not supported.
 
 
-def removeSuffix(text, suffix):
+def removeSuffix(text: str, suffix: str) -> str:
     if not text.endswith(suffix):
         return text
     return text[:len(text) - len(suffix)]
@@ -114,3 +114,11 @@ def formatText(text):
     text = markdown2html(text)
     text = replaceBrackets(text, "$", "\\(", "\\)")
     return text
+
+
+def getTitle(text: str):
+    lines = text.splitlines()
+    for x in lines:
+        if x.startswith("# "):
+            return x[2:].strip()
+    return None

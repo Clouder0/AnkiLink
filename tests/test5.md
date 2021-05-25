@@ -1,3 +1,5 @@
+# Choices Example
+
 Choices are supported, that is:  
 A something like this
 B.can be this too
