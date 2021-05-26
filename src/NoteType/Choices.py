@@ -32,9 +32,6 @@ def get(text, tags):
         raise Exception("Error! Choices with no answer.")
     if i < len(lines):
         remark = list2str(lines[i:])
-    question = formatText(question)
-    answer = formatText(answer)
-    remark = formatText(remark)
     return ChoicesNote(question, options, answer, remark, _tags=tags)
 
 
