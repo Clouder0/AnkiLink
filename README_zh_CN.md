@@ -6,15 +6,15 @@
 [![Contributors][contributors-shield]][contributors-url]
 [![CodeFactor][codefactor-shield]][codefactor-url]
 
-# AnkiImporter
+# AnkiLink
 
 ## Introduction
 
-AnkiImporter 能将你的 markdown 语法文本导入到 Anki 中。  
+AnkiLink 能将你的 markdown 语法文本导入到 Anki 中。  
 简单而强大的小工具。
 
-导入 Anki 的轮子已经被造了一车了，但 AnkiImporter 能让你耳目一新。  
-遵循极简主义，AnkiImporter 采用自然语法，让你在流畅书写卡片的同时，免于纠结排版格式的问题。
+导入 Anki 的轮子已经被造了一车了，但 AnkiLink 能让你耳目一新。  
+遵循极简主义，AnkiLink 采用自然语法，让你在流畅书写卡片的同时，免于纠结排版格式的问题。
 
 特色：
 
@@ -75,7 +75,7 @@ Code:`2055492159`
 
 方法一（不推荐）：直接下载本仓库的 `src` 文件夹。随后执行 `pip install -r src/requirements.txt` 补全依赖。
 
-方法二（推荐）：在 [Releases](https://github.com/Clouder0/AnkiImporter/release) 中下载二进制版本，不需要 Python 环境，开箱即用。
+方法二（推荐）：在 [Releases](https://github.com/Clouder0/AnkiLink/release) 中下载二进制版本，不需要 Python 环境，开箱即用。
 
 ### 导入测试牌组
 
@@ -84,9 +84,9 @@ Code:`2055492159`
 它会创建一个名为 `Export` 的牌组，还有一个名为 `#Export` 的标签。  
 所有导入的卡片默认都会进入 `Export` 牌组中，加上 `#Export` 的标签。随后你可以在 Anki 中批量更改它们。
 
-通过命令行参数，你可以指定导入的卡片所属的牌组、标签。例如： `./AnkiImporter test.md --tags tag1 tag2 --deck targetDeck`
+通过命令行参数，你可以指定导入的卡片所属的牌组、标签。例如： `./AnkiLink test.md --tags tag1 tag2 --deck targetDeck`
 
-[下载测试牌组](https://github.com/Clouder0/AnkiImporter/blob/main/tests/ExampleDeck.apkg) 并导入。
+[下载测试牌组](https://github.com/Clouder0/AnkiLink/blob/main/tests/ExampleDeck.apkg) 并导入。
 
 大概长这样：
 ![screenshot-1](doc/images/screenshot-1)
@@ -98,13 +98,13 @@ Code:`2055492159`
 这是一个命令行工具。
 
 Windows 系统下, 打开 `cmd` 或者任意你喜欢的终端，执行:  
-`{yourpath}\AnkiImporter.exe {yourfile}`  
+`{yourpath}\AnkiLink.exe {yourfile}`  
 如果用源码，执行：
 `python -m {yourpath}\src {yourfile}`  
 
 其余平台同理。
 
-更多用法, 输入 `.\AnkiImporter -h` 之类的东西查看。
+更多用法, 输入 `.\AnkiLink -h` 之类的东西查看。
 
 ### 导出为 apkg 文件
 
@@ -236,7 +236,7 @@ A funny feature.
 
 ---
 
-更多例子, 见 [tests](https://github.com/Clouder0/AnkiImporter/tree/main/tests).
+更多例子, 见 [tests](https://github.com/Clouder0/AnkiLink/tree/main/tests).
 
 ## Credit
 
@@ -248,19 +248,19 @@ A funny feature.
 ## License
 
 采用 GPL v3 协议开源。
-License is available [here](https://github.com/Clouder0/AnkiImporter/blob/main/LICENSE).
+License is available [here](https://github.com/Clouder0/AnkiLink/blob/main/LICENSE).
 
-[contributors-shield]: https://img.shields.io/github/contributors/Clouder0/AnkiImporter.svg
-[contributors-url]: https://github.com/Clouder0/AnkiImporter/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/Clouder0/AnkiImporter.svg
-[forks-url]: https://github.com/Clouder0/AnkiImporter/network/members
-[stars-shield]: https://img.shields.io/github/stars/Clouder0/AnkiImporter.svg
-[stars-url]: https://github.com/Clouder0/AnkiImporter/stargazers
-[issues-shield]: https://img.shields.io/github/issues/Clouder0/AnkiImporter.svg
-[issues-url]: https://github.com/Clouder0/AnkiImporter/issues
-[license-shield]: https://img.shields.io/github/license/Clouder0/AnkiImporter.svg
-[license-url]: https://github.com/Clouder0/AnkiImporter/blob/main/LICENSE.txt
-[release-shield]: https://img.shields.io/github/release/Clouder0/AnkiImporter.svg
-[release-url]: https://github.com/Clouder0/AnkiImporter/releases
-[codefactor-shield]: https://www.codefactor.io/repository/github/clouder0/ankiimporter/badge/main
-[codefactor-url]: https://www.codefactor.io/repository/github/clouder0/ankiimporter/overview/main
+[contributors-shield]: https://img.shields.io/github/contributors/Clouder0/AnkiLink.svg
+[contributors-url]: https://github.com/Clouder0/AnkiLink/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Clouder0/AnkiLink.svg
+[forks-url]: https://github.com/Clouder0/AnkiLink/network/members
+[stars-shield]: https://img.shields.io/github/stars/Clouder0/AnkiLink.svg
+[stars-url]: https://github.com/Clouder0/AnkiLink/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Clouder0/AnkiLink.svg
+[issues-url]: https://github.com/Clouder0/AnkiLink/issues
+[license-shield]: https://img.shields.io/github/license/Clouder0/AnkiLink.svg
+[license-url]: https://github.com/Clouder0/AnkiLink/blob/main/LICENSE.txt
+[release-shield]: https://img.shields.io/github/release/Clouder0/AnkiLink.svg
+[release-url]: https://github.com/Clouder0/AnkiLink/releases
+[codefactor-shield]: https://www.codefactor.io/repository/github/clouder0/AnkiLink/badge/main
+[codefactor-url]: https://www.codefactor.io/repository/github/clouder0/AnkiLink/overview/main

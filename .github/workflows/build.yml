@@ -33,9 +33,9 @@ jobs:
           path: src
       - uses: actions/upload-artifact@v2
         with:
-          name: AnkiImporter-win
+          name: AnkiLink-win
           path: src/dist/windows
       - uses: actions/upload-artifact@v2
         with:
-          name: AnkiImporter-linux
+          name: AnkiLink-linux
           path: src/dist/linux

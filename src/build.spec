@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(['__main__.py'],
-             pathex=['/home/clouder/Downloads/AnkiImporter'],
+             pathex=['/home/clouder/Downloads/AnkiLink'],
              binaries=[],
              datas=[],
              hiddenimports=[],
@@ -24,7 +24,7 @@ exe = EXE(pyz,
           a.zipfiles,
           a.datas,
           [],
-          name='AnkiImporter',
+          name='AnkiLink',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,

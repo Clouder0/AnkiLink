@@ -6,11 +6,11 @@
 [![Contributors][contributors-shield]][contributors-url]
 [![CodeFactor][codefactor-shield]][codefactor-url]
 
-# AnkiImporter
+# AnkiLink
 
 ## Introduction
 
-AnkiImporter enables you to import Anki notes directly from your markdown files. It is simple, easy to use yet that powerful. 
+AnkiLink enables you to import Anki notes directly from your markdown files. It is simple, easy to use yet that powerful. 
 
 There are tons of Anki Importers in the world, while this one features minimalism.
 
@@ -73,7 +73,7 @@ This step is optional if you tend to use a binary release of the script.
 
 Method 1: directly download the `src` folder.
 
-Method 2: download binary release [here](https://github.com/Clouder0/AnkiImporter/releases), which doesn't require a python environment and is ready-to-use.
+Method 2: download binary release [here](https://github.com/Clouder0/AnkiLink/releases), which doesn't require a python environment and is ready-to-use.
 
 ### import ExampleDeck
 
@@ -82,9 +82,9 @@ This step is necessary because several Note Types are included in the deck.
 It will create an `Export` Deck in your Anki profile, plus a tag `#Export`.   
 By default, all cards imported by this tool would go into `Export` Deck with the tag `Export`, you can later modify them manually.  
 
-Also, it is configurable through command-line params, like `./AnkiImporter test.md --tags tag1 tag2 --deck targetDeck`
+Also, it is configurable through command-line params, like `./AnkiLink test.md --tags tag1 tag2 --deck targetDeck`
 
-[Download](https://github.com/Clouder0/AnkiImporter/blob/main/tests/ExampleDeck.apkg) and import it into your Anki.
+[Download](https://github.com/Clouder0/AnkiLink/blob/main/tests/ExampleDeck.apkg) and import it into your Anki.
 
 This is what the Deck is like:  
 ![screenshot-1](doc/images/screenshot-1)
@@ -96,13 +96,13 @@ Now, the installation is done.
 This is a command-line tool.
 
 On windows, open `cmd` and execute with:  
-`{yourpath}\AnkiImporter.exe {yourfile}`  
+`{yourpath}\AnkiLink.exe {yourfile}`  
 Alternatively, if you use the raw script, execute with:
 `python -m {yourpath}\src {yourfile}`  
 
 The process is similar on other platforms.
 
-For more usage, enter `.\AnkiImporter -h` or something like that to see.
+For more usage, enter `.\AnkiLink -h` or something like that to see.
 
 ### Export to apkg file
 
@@ -235,14 +235,14 @@ A funny feature.
 
 ---
 
-For more examples, see [tests](https://github.com/Clouder0/AnkiImporter/tree/main/tests).
+For more examples, see [tests](https://github.com/Clouder0/AnkiLink/tree/main/tests).
 
 ## Alternatives
 
-Tons of AnkiImporters out there. Here are some alternatives, some of which may suit your need.
+Tons of AnkiLinks out there. Here are some alternatives, some of which may suit your need.
 
 - [apy](https://github.com/lervag/apy): need to install Anki source, directly write to Anki database without opening Anki or importing apkg into Anki. Linux-friendly.
-- [Anki-Import](https://github.com/sdondley/Anki-Import): similar syntax with my AnkiImporter but too many linebreaks. Lack of markdown support. Haven't been updated for years.
+- [Anki-Import](https://github.com/sdondley/Anki-Import): similar syntax with my AnkiLink but too many linebreaks. Lack of markdown support. Haven't been updated for years.
 - [inka](https://github.com/lazy-void/inka): a powerful tool, and the most similar one with mine. I would probably not start this project if I had discovered it earlier! we are developing in different directions though.
 
 ## Credit
@@ -255,19 +255,19 @@ Tons of AnkiImporters out there. Here are some alternatives, some of which may s
 ## License
 
 The source code is licensed under GPL v3.   
-License is available [here](https://github.com/Clouder0/AnkiImporter/blob/main/LICENSE).
+License is available [here](https://github.com/Clouder0/AnkiLink/blob/main/LICENSE).
 
-[contributors-shield]: https://img.shields.io/github/contributors/Clouder0/AnkiImporter.svg
-[contributors-url]: https://github.com/Clouder0/AnkiImporter/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/Clouder0/AnkiImporter.svg
-[forks-url]: https://github.com/Clouder0/AnkiImporter/network/members
-[stars-shield]: https://img.shields.io/github/stars/Clouder0/AnkiImporter.svg
-[stars-url]: https://github.com/Clouder0/AnkiImporter/stargazers
-[issues-shield]: https://img.shields.io/github/issues/Clouder0/AnkiImporter.svg
-[issues-url]: https://github.com/Clouder0/AnkiImporter/issues
-[license-shield]: https://img.shields.io/github/license/Clouder0/AnkiImporter.svg
-[license-url]: https://github.com/Clouder0/AnkiImporter/blob/main/LICENSE.txt
-[release-shield]: https://img.shields.io/github/release/Clouder0/AnkiImporter.svg
-[release-url]: https://github.com/Clouder0/AnkiImporter/releases
-[codefactor-shield]: https://www.codefactor.io/repository/github/clouder0/ankiimporter/badge/main
-[codefactor-url]: https://www.codefactor.io/repository/github/clouder0/ankiimporter/overview/main
+[contributors-shield]: https://img.shields.io/github/contributors/Clouder0/AnkiLink.svg
+[contributors-url]: https://github.com/Clouder0/AnkiLink/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Clouder0/AnkiLink.svg
+[forks-url]: https://github.com/Clouder0/AnkiLink/network/members
+[stars-shield]: https://img.shields.io/github/stars/Clouder0/AnkiLink.svg
+[stars-url]: https://github.com/Clouder0/AnkiLink/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Clouder0/AnkiLink.svg
+[issues-url]: https://github.com/Clouder0/AnkiLink/issues
+[license-shield]: https://img.shields.io/github/license/Clouder0/AnkiLink.svg
+[license-url]: https://github.com/Clouder0/AnkiLink/blob/main/LICENSE.txt
+[release-shield]: https://img.shields.io/github/release/Clouder0/AnkiLink.svg
+[release-url]: https://github.com/Clouder0/AnkiLink/releases
+[codefactor-shield]: https://www.codefactor.io/repository/github/clouder0/AnkiLink/badge/main
+[codefactor-url]: https://www.codefactor.io/repository/github/clouder0/AnkiLink/overview/main

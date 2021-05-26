@@ -1,3 +1,3 @@
 pyinstaller src/__main__.py\
   --onefile --nowindow\
-  --name AnkiImporter
+  --name AnkiLink
