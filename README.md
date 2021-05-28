@@ -1,3 +1,5 @@
+# AnkiLink
+
 [![Release][release-shield]][release-url]
 [![MIT License][license-shield]][license-url]
 [![Issues][issues-shield]][issues-url]
@@ -6,11 +8,9 @@
 [![Contributors][contributors-shield]][contributors-url]
 [![CodeFactor][codefactor-shield]][codefactor-url]
 
-# AnkiLink
-
 ## Introduction
 
-AnkiLink enables you to import Anki notes directly from your markdown files. It is simple, easy to use yet that powerful. 
+AnkiLink enables you to import Anki notes directly from your markdown files. It is simple, easy to use yet that powerful.
 
 There are tons of Anki Importers in the world, while this one features minimalism.
 
@@ -24,11 +24,11 @@ Features:
 - Cross-Platform
 - Binary Build available
 - Many Useful built-in Note Types:
-    - Q&A
-    - Cloze
-    - Choices
-    - ListCloze
-    - TableCloze
+  - Q&A
+  - Cloze
+  - Choices
+  - ListCloze
+  - TableCloze
 - Easy to Extend
 
 ---
@@ -59,7 +59,7 @@ Clozes are **easy** to **create** too.
 
 ### install Anki Connect
 
-The first step is to install [AnkiConnect](https://github.com/FooSoft/anki-connect) extension.   
+The first step is to install [AnkiConnect](https://github.com/FooSoft/anki-connect) extension.
 Code:`2055492159`  
 For detailed installation guide, please visit the [anki-connect repo](https://github.com/FooSoft/anki-connect).
 
@@ -79,7 +79,7 @@ Method 2: download binary release [here](https://github.com/Clouder0/AnkiLink/re
 
 This step is necessary because several Note Types are included in the deck.
 
-It will create an `Export` Deck in your Anki profile, plus a tag `#Export`.   
+It will create an `Export` Deck in your Anki profile, plus a tag `#Export`.  
 By default, all cards imported by this tool would go into `Export` Deck with the tag `Export`, you can later modify them manually.  
 
 Also, it is configurable through command-line params, like `./AnkiLink test.md --tags tag1 tag2 --deck targetDeck`
@@ -109,7 +109,8 @@ For more usage, enter `.\AnkiLink -h` or something like that to see.
 If you want to export your notes to an apkg file, you can use `-o filename` param.
 
 For example, generate an apkg file from `test2.md`:  
-```
+
+```bash
 python -m src tests/test2.md -o test.apkg
 ```
 
@@ -208,10 +209,10 @@ Example List QA
   - lksfdhos
   - sdhfksaj
       - dskf
-	  - sdkf
-	      - dfjs
-	      - dfjs
-	  - oipw3
+      - sdkf    
+      - dfjs
+      - dfjs
+      - oipw3
   - dppp
 ```
 
@@ -254,7 +255,7 @@ Tons of AnkiLinks out there. Here are some alternatives, some of which may suit 
 
 ## License
 
-The source code is licensed under GPL v3.   
+The source code is licensed under GPL v3.  
 License is available [here](https://github.com/Clouder0/AnkiLink/blob/main/LICENSE).
 
 [contributors-shield]: https://img.shields.io/github/contributors/Clouder0/AnkiLink.svg

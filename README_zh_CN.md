@@ -1,3 +1,5 @@
+# AnkiLink
+
 [![Release][release-shield]][release-url]
 [![MIT License][license-shield]][license-url]
 [![Issues][issues-shield]][issues-url]
@@ -5,8 +7,6 @@
 [![Forks][forks-shield]][forks-url]
 [![Contributors][contributors-shield]][contributors-url]
 [![CodeFactor][codefactor-shield]][codefactor-url]
-
-# AnkiLink
 
 ## Introduction
 
@@ -26,11 +26,11 @@ AnkiLink 能将你的 markdown 语法文本导入到 Anki 中。
 - 跨平台
 - 发布二进制文件，免于安装 Python 环境
 - 常用的内置 Note 类型
-    - 问答
-    - 完形填空
-    - 选择题(单选、多选)
-    - 列表完形填空
-    - 表格完形填空
+  - 问答
+  - 完形填空
+  - 选择题(单选、多选)
+  - 列表完形填空
+  - 表格完形填空
 - 易于拓展
 
 ---
@@ -61,7 +61,7 @@ AnkiLink 能将你的 markdown 语法文本导入到 Anki 中。
 
 ### 安装 AnkiConnect
 
-安装 [AnkiConnect](https://github.com/FooSoft/anki-connect) 拓展.   
+安装 [AnkiConnect](https://github.com/FooSoft/anki-connect) 拓展.  
 Code:`2055492159`  
 详细流程见 [anki-connect repo](https://github.com/FooSoft/anki-connect).
 
@@ -110,8 +110,9 @@ Windows 系统下, 打开 `cmd` 或者任意你喜欢的终端，执行:
 
 如果你想导出为 apkg 文件，使用 `-o filename` 参数。
 
-例如从 `test2.md` 生成 `test.apkg`，输入:   
-```
+例如从 `test2.md` 生成 `test.apkg`，输入:  
+
+```bash
 python -m src tests/test2.md -o test.apkg
 ```
 
@@ -209,10 +210,10 @@ Example List QA
   - lksfdhos
   - sdhfksaj
       - dskf
-	  - sdkf
-	      - dfjs
-	      - dfjs
-	  - oipw3
+      - sdkf
+          - dfjs
+          - dfjs
+  - oipw3
   - dppp
 ```
 
