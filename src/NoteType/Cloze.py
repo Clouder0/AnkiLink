@@ -2,21 +2,38 @@ import helper.ankiConnectHelper
 from note import Note
 from model import Model
 
+clozeNumberPrefix = "["
+clozeNumberSuffix = "]"
+
 
 def check(lines: list):
     return "**" in lines[0]
 
 
-def get(text: str, tags: list) -> Note:
+def get(text: str, tags: list = []) -> Note:
     sub = text.split("**")
     output = ""
     if len(sub) == 0:
         raise Exception("Invalid Cloze format, skipping.")
     # odd indexes are clozes
+    pid = 0
     for i, x in enumerate(sub):
         if(i % 2 == 1):
-            output = output + \
-                "{{c" + str(((i + 1) // 2)) + "::" + x + "}}"
+            id = pid + 1
+            try:
+                if x.startswith(clozeNumberPrefix):
+                    p = x.find(clozeNumberSuffix)
+                    now = x[1:p]
+                    if not now.isdigit():
+                        raise Exception()
+                    id = int(now)
+                    x = x[p + 1:]
+            except Exception:
+                pass
+            finally:
+                output = output + "{{c" + str(id) + "::" + x + "}}"
+                if id == pid + 1:
+                    pid = id
         else:
             output = output + x
     return ClozeNote(output, _tags=tags)
