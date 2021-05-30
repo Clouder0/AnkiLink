@@ -3,6 +3,7 @@ from ..model import Model
 
 clozeNumberPrefix = "["
 clozeNumberSuffix = "]"
+priority = 20
 
 
 def check(lines: list):

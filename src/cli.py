@@ -41,3 +41,7 @@ def execute_from_commandline():
             print("No filename provided. Exporting to " + config.outputpath)
         exportDeck(getDeck(config.deck_name, noteLists), config.outputpath)
     print("All done.")
+
+
+if __name__ == "__main__":
+    execute_from_commandline()

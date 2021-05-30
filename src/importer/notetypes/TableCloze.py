@@ -1,6 +1,9 @@
 from .Cloze import get as cget
 
 
+priority = 10
+
+
 def check(lines):
     if len(lines) < 3:
         return False

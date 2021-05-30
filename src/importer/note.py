@@ -2,7 +2,7 @@ from .helper.formatHelper import formatText
 
 
 class Note:
-    def __init__(self, model, fields={}, tags=("#Export")):
+    def __init__(self, model, fields={}, tags=[]):
         self.model = model
         self.fields = fields
         self.outputfields = self.fields.copy()

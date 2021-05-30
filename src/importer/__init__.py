@@ -1,3 +1,3 @@
-from . import importer, config, note, model
+from . import config, importer, note, model
 
-all = ["importer", "note", "model", "config"]
+__all__ = ["config", "importer", "note", "model"]

@@ -3,6 +3,9 @@ from ..note import Note
 from ..model import Model
 
 
+priority = 15
+
+
 def check(lines):
     return len(lines) >= 3 and lines[1][0] == "A"
 

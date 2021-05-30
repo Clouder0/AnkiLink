@@ -1,34 +1,20 @@
 import datetime
-from .notetype import *
 from . import config
+from . import notetype_loader as loader
 
 
-def HandleNote(text: str, noteList: list):
+def HandleNote(text: str, noteList: list) -> str:
     lines = text.splitlines(keepends=False)
     if len(lines) == 0:
         return "Blank text, skipping.\n"
     try:
         ret = "Recognized as {}\n"
-        rec = False
-        # TODO dynamic importing for add-ons
-        if Cloze.check(lines):
-            ret = ret.format("Cloze")
-            noteList.append(Cloze.get(text, tags=config.tags))
-        elif Choices.check(lines):
-            ret = ret.format("Cloze")
-            noteList.append(Choices.get(text, tags=config.tags))
-        elif ListCloze.check(lines):
-            ret = ret.format("List Cloze")
-            noteList.append(ListCloze.get(text, tags=config.tags))
-        elif TableCloze.check(lines):
-            ret = ret.format("Table Cloze")
-            noteList.append(TableCloze.get(text, tags=config.tags))
-        elif QA.check(lines):
-            ret = ret.format("QA")
-            noteList.append(QA.get(text, tags=config.tags))
-        else:
-            return "Unmatching any format.\n"
-        return ret
+        for now in loader.discovered_notetypes.values():
+            if now.check(lines):
+                ret = ret.format(now.__name__.split(".")[-1])
+                noteList.append(now.get(text, tags=config.tags))
+                return ret
+        return "Unmatching any format.\n"
     except Exception as e:
         return """Error! Exception:{}
 details:
@@ -37,7 +23,7 @@ details:
     context:{}\n""".format(e, e.__class__, e.__cause__, e.__context__)
 
 
-def HandlePost(text):
+def HandlePost(text: str):
     notes = text.split("\n\n")
     f = open("log.txt", "a+", encoding="utf-8")
     f.write("\n" + datetime.datetime.now().strftime("%c") + "\n")

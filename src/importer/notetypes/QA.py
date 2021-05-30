@@ -3,6 +3,9 @@ from ..note import Note
 from ..model import Model
 
 
+priority = 10
+
+
 def check(lines):
     return len(lines) >= 2
 
