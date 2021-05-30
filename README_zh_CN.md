@@ -260,7 +260,7 @@ License is available [here](https://github.com/Clouder0/AnkiLink/blob/main/LICEN
 [issues-shield]: https://img.shields.io/github/issues/Clouder0/AnkiLink.svg
 [issues-url]: https://github.com/Clouder0/AnkiLink/issues
 [license-shield]: https://img.shields.io/github/license/Clouder0/AnkiLink.svg
-[license-url]: https://github.com/Clouder0/AnkiLink/blob/main/LICENSE.txt
+[license-url]: https://github.com/Clouder0/AnkiLink/blob/main/LICENSE
 [release-shield]: https://img.shields.io/github/release/Clouder0/AnkiLink.svg
 [release-url]: https://github.com/Clouder0/AnkiLink/releases
 [codefactor-shield]: https://www.codefactor.io/repository/github/clouder0/AnkiLink/badge/main
