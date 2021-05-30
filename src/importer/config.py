@@ -1,7 +1,7 @@
 import sys
 import argparse
 
-version_name = "2.1.1"
+version_name = "2.2.0"
 deck_name = "Export"
 tags = []
 file_list = []
@@ -27,9 +27,12 @@ parser.add_argument("-t", "--tags", metavar="tags", nargs="*", default=tags,
                     help=help_info["tags"])
 parser.add_argument("-o", "--output", nargs="?", metavar="output", help=help_info["output"])
 
-args = parser.parse_args()
-deck_name = args.deckname
-tags = args.tags
-file_list = args.filename
-output = "-o" in sys.argv or "--output" in sys.argv
-outputpath = args.output
+
+def parse():
+    args = parser.parse_args()
+    global deck_name, tags, file_list, output, outputpath
+    deck_name = args.deckname
+    tags = args.tags
+    file_list = args.filename
+    output = "-o" in sys.argv or "--output" in sys.argv
+    outputpath = args.output

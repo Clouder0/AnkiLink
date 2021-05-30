@@ -7,6 +7,7 @@ from importer import *
 
 
 def execute_from_commandline():
+    config.parse()
     print("Starting...")
     noteLists = []
     if config.output is False and not checkOnline():  # import into Anki
