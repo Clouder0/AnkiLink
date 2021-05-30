@@ -23,8 +23,7 @@ def get(text, tags):
         i += 1
     if len(options) <= 1:
         raise Exception("Error! Choices with only one option.")
-    options = options[0] + \
-        list2str(options[1:], "<div>", "</div>", keepsuffix=True)
+    options = list2str(options)
     if i < len(lines):
         answer = list2str([x for x in lines[i] if ord(x) >= 65 and ord(x) <= 90], "", "")
         i += 1
@@ -459,5 +458,3 @@ class ChoicesNote(Note):
     def __init__(self, question, options, answer, remark, model=_model, _tags=("#Export",)):
         super().__init__(model, {
             "Question": question, "Options": options, "Answer": answer, "Remark": remark}, _tags)
-        # special fix for Choices
-        self.outputfields["Options"] = self.fields["Options"]
