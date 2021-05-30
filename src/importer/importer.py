@@ -9,7 +9,7 @@ def HandleNote(text: str, noteList: list) -> str:
         return "Blank text, skipping.\n"
     try:
         ret = "Recognized as {}\n"
-        for now in loader.discovered_notetypes.values():
+        for now in loader.discovered_notetypes:
             if now.check(lines):
                 ret = ret.format(now.__name__.split(".")[-1])
                 noteList.append(now.get(text, tags=config.tags))

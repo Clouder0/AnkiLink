@@ -8,7 +8,6 @@ def iter_namespace(ns_pkg: str) -> Iterator[pkgutil.ModuleInfo]:
     return pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + ".")
 
 
-discovered_notetypes = {
-    name: importlib.import_module(name)
-    for finder, name, ispkg in iter_namespace(importer.notetypes)
-}
+discovered_notetypes = sorted([
+    importlib.import_module(name) for finder, name, ispkg in iter_namespace(importer.notetypes)
+], key=lambda x: x.priority, reverse=True)
