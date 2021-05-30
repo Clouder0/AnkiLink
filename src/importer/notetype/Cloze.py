@@ -1,6 +1,5 @@
-import helper.ankiConnectHelper
-from note import Note
-from model import Model
+from ..note import Note
+from ..model import Model
 
 clozeNumberPrefix = "["
 clozeNumberSuffix = "]"

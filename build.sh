@@ -1,3 +1,3 @@
-pyinstaller src/__main__.py\
+pyinstaller src/cli.py\
   --onefile --nowindow\
   --name AnkiLink

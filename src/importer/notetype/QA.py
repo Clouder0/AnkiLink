@@ -1,7 +1,6 @@
-from helper.formatHelper import list2str
-from note import Note
-from model import Model
-import helper.ankiConnectHelper
+from ..helper.formatHelper import list2str
+from ..note import Note
+from ..model import Model
 
 
 def check(lines):

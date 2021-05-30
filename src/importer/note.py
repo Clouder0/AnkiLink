@@ -1,4 +1,5 @@
-from helper.formatHelper import formatText
+from .helper.formatHelper import formatText
+
 
 class Note:
     def __init__(self, model, fields={}, tags=("#Export")):

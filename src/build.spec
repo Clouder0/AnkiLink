@@ -4,7 +4,7 @@
 block_cipher = None
 
 
-a = Analysis(['__main__.py'],
+a = Analysis(['cli.py'],
              pathex=['/home/clouder/Downloads/AnkiLink'],
              binaries=[],
              datas=[],

@@ -1,9 +1,6 @@
-import helper.ankiConnectHelper
-from helper.formatHelper import list2str, formatText
-from helper.genankiHelper import getIdfromStr
-import genanki
-from note import Note
-from model import Model
+from ..helper.formatHelper import list2str, formatText
+from ..note import Note
+from ..model import Model
 
 
 def check(lines):
