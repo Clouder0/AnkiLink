@@ -24,9 +24,7 @@ def get(text, tags):
 
 
 BACK = """{{FrontSide}}
-
 <hr id=answer>
-
 {{Back}}"""
 
 CSS = """.card {
@@ -36,9 +34,17 @@ CSS = """.card {
   color: black;
   background-color: white;
 }
+ul {
+display: inline-block;
+text-align: left;
+}
+ol {
+display: inline-block;
+text-align: left;
+}
 """
 
-MODELNAME = "DBasic"
+MODELNAME = "AnkiLink-Basic"
 MODELID = 1145141921
 
 _model = Model(

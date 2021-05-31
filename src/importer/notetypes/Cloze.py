@@ -42,7 +42,7 @@ def get(text: str, tags: list = []) -> Note:
 CSS = """.card {
   font-family: arial;
   font-size: 20px;
-  text-align: left;
+  text-align: center;
   color: black;
   background-color: white;
 }
@@ -54,9 +54,17 @@ CSS = """.card {
 .nightMode .cloze {
  color: lightblue;
 }
+ul {
+display: inline-block;
+text-align: left;
+}
+ol {
+display: inline-block;
+text-align: left;
+}
 """
 
-MODELNAME = "DCloze"
+MODELNAME = "AnkiLink-Cloze"
 MODELID = 1145141920
 
 _model = Model(

@@ -52,7 +52,6 @@ FRONT = """<!--tuxzz.20201115.v0.r0-->
 <script>
 (function() {
 "use strict";
-
 function xoshiro128ss(a, b, c, d) {
   return function() {
     var t = b << 9, r = a * 5; r = (r << 7 | r >>> 25) * 9;
@@ -62,12 +61,10 @@ function xoshiro128ss(a, b, c, d) {
     return (r >>> 0) / 4294967296;
   }
 }
-
 const date = new Date();
 function pseudo_shuffle_inplace(l) {
   const rng = xoshiro128ss(date.getFullYear(), date.getMonth(), date.getDay(), 42);
   let currLen = l.length;
-
   while (currLen !== 0) {
     const t = l[currLen - 1];
     const idx = Math.floor(rng() * currLen);
@@ -75,7 +72,6 @@ function pseudo_shuffle_inplace(l) {
     l[idx] = t;
     currLen -= 1;
   }
-  
   return l;
 }
 
@@ -360,73 +356,66 @@ CSS = """<style>
 .card {
   font-family: sans;
 }
-
 .card {
   font-family: sans;
   font-size: 17px;
-  text-align: left;
+  text-align: center;
   color: white;
   background-color: #272822;
 }
-
+ul {
+display: inline-block;
+text-align: left;
+}
+ol {
+display: inline-block;
+text-align: left;
+}
 div {
   margin: 5px auto;
 }
-
 .text {
   color: #e6db74;
-  text-align: left;
+  text-align: center;
 }
-
 .classify {
   font-size: 22px;
 }
-
 .remark {
   margin-top: 15px;
   font-size: 16px;
   color: #eeeebb;
-  text-align: left;
+  text-align: center;
 }
-
 .cloze {
   font-weight: bold;
   color: #a6e22e;
   display: inline;
   margin-right: 15px;
 }
-
 #optionBox {
   list-style: upper-latin;
 }
-
 #optionBox label, #optionBox input {
   cursor: pointer;
 }
-
 #optionBox li:hover {
-  font-weight: bold;
   color: #eeeebb;
 }
-
 #optionBox li {
   margin-top: 10px;
 }
-
 #optionBox li.VeryRight {
   color: green;
 }
-
 #optionBox li.RightNotSelected {
   color: green;
   text-decoration: underline;
 }
-
 #optionBox li.WrongSelected {
   color: red;
   text-decoration: line-through;
 }
-
 #performance {
   text-align: center;
   font-size: 12px;
@@ -436,7 +425,7 @@ div {
 </style>
 """
 
-MODELNAME = "DChoices"
+MODELNAME = "AnkiLink-Choices"
 MODELID = 1145141919
 
 _model = Model(
