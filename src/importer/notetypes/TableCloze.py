@@ -1,7 +1,7 @@
 from .Cloze import get as cget
 
 
-priority = 10
+priority = 15
 
 
 def check(lines):
