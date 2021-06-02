@@ -45,7 +45,7 @@ FRONT = """<!--tuxzz.20201115.v0.r0-->
 <hr id="hrLine" style="display:none">
 <div id="answerBox" style="display:none">Answer：<span id="newAns"></span>（Original Answer:<span id="origAns"></span>）</div>
 <div id="remarkBox" style="display:none">Remark：{{Remark}}</div>
-<button id="submitButton">Submit</button>
+<br><button id="submitButton">Submit</button>
 {{/Options}}
 
 
