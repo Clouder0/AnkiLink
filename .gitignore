@@ -7,6 +7,8 @@ src/importer/notetype/__pycache__/**
 src/importer/helper/__pycache__/**
 build/**
 dist/**
+src/build/**
+src/dist/**
 test.py
 env/**
 test.apkg

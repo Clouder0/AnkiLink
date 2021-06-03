@@ -3,7 +3,7 @@ import os
 from importer.helper.genankiHelper import getDeck, exportDeck
 from importer.helper.ankiConnectHelper import addNotes, checkOnline
 from importer.helper.formatHelper import getTitle, removeSuffix
-from importer import *
+from importer import importer, config
 
 
 def execute_from_commandline():

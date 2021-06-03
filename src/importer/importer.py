@@ -1,26 +1,30 @@
 import datetime
 from . import config
 from . import notetype_loader as loader
+from .helper.formatHelper import list2str
 
 
 def HandleNote(text: str, noteList: list) -> str:
-    lines = text.splitlines(keepends=False)
-    if len(lines) == 0:
-        return "Blank text, skipping.\n"
-    try:
-        ret = "Recognized as {}\n"
-        for now in loader.discovered_notetypes:
-            if now.check(lines):
-                ret = ret.format(now.__name__.split(".")[-1])
-                noteList.append(now.get(text, tags=config.tags))
-                return ret
-        return "Unmatching any format.\n"
-    except Exception as e:
-        return """Error! Exception:{}
+    ERRORMSG = """Error! Exception:{}
 details:
     class:{}
     cause:{}
-    context:{}\n""".format(e, e.__class__, e.__cause__, e.__context__)
+    context:{}\n"""
+    lines = text.splitlines(keepends=False)
+    if len(lines) == 0:
+        return "Blank text, skipping.\n"
+    ret = "Recognized as {}\n"
+    for now in loader.discovered_notetypes:
+        try:
+            if now.check(lines):
+                ret = ret.format(now.__name__.split(".")[-1])
+                noteList.append(now.get(text, tags=config.tags))
+                yield ret
+                return
+        except Exception as e:
+            yield ERRORMSG.format(e, e.__class__, e.__cause__, e.__context__)
+    yield "Unmatching any format.\n"
+    return
 
 
 def HandlePost(text: str):
@@ -29,6 +33,6 @@ def HandlePost(text: str):
     f.write("\n" + datetime.datetime.now().strftime("%c") + "\n")
     noteList = []
     for note in notes:
-        f.write(HandleNote(note, noteList))
+        f.write(list2str(HandleNote(note, noteList)))
     f.close()
     return noteList

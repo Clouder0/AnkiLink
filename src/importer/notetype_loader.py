@@ -1,13 +1,13 @@
-import importlib
+import sys
+import os
 import pkgutil
-from typing import Iterator
-import importer.notetypes
+import importlib
+from importer.notetypes import Choices, Cloze, ListCloze, QA, TableCloze
 
 
-def iter_namespace(ns_pkg: str) -> Iterator[pkgutil.ModuleInfo]:
-    return pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + ".")
-
-
-discovered_notetypes = sorted([
-    importlib.import_module(name) for finder, name, ispkg in iter_namespace(importer.notetypes)
-], key=lambda x: x.priority, reverse=True)
+discovered_notetypes = [Choices, Cloze, ListCloze, QA, TableCloze]
+sys.path.append("." + os.sep + "notetypes" + os.sep)
+sys.path.append("." + os.sep + "importer" + os.sep + "notetypes" + os.sep)
+discovered_notetypes.extend(
+    importlib.import_module(name) for finder, name, ispkg in pkgutil.iter_modules() if name.startswith("notetype_"))
+discovered_notetypes.sort(key=lambda x: x.priority, reverse=True)

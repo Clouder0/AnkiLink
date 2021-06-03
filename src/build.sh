@@ -1,5 +1,6 @@
 pyinstaller cli.py\
-  --nowindow \
+  --nowindow\
+  --onefile\
   --name AnkiLink\
   --hidden-import=importer.notetypes\
   --paths="./importer/"\
