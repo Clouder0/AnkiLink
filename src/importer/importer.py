@@ -9,7 +9,7 @@ def HandleNote(text: str, noteList: list) -> str:
 details:
     class:{}
     cause:{}
-    context:{}\n"""
+    context:{}"""
     lines = text.splitlines(keepends=False)
     if len(lines) == 0:
         return "Blank text, skipping.\n"
@@ -33,6 +33,6 @@ def HandlePost(text: str):
     f.write("\n" + datetime.datetime.now().strftime("%c") + "\n")
     noteList = []
     for note in notes:
-        f.write(list2str(HandleNote(note, noteList)))
+        f.write("\n{}\n".format(list2str(HandleNote(note, noteList))))
     f.close()
     return noteList
