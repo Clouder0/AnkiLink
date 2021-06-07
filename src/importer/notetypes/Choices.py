@@ -19,7 +19,7 @@ def get(text, tags):
     while i < len(lines):
         if lines[i][0] != chr(65 + i - 1):
             break
-        options.append(formatText(lines[i].strip()))
+        options.append(formatText(lines[i]))
         i += 1
     if len(options) <= 1:
         raise Exception("Error! Choices with only one option.")
@@ -34,7 +34,7 @@ def get(text, tags):
     return ChoicesNote(question, options, answer, remark, _tags=tags)
 
 
-FRONT = """<!--tuxzz.20201115.v0.r0-->
+FRONT = r"""<!--tuxzz.20201115.v0.r0-->
 <div id="classifyBox" class="classify"><span id="classifyText"></span><span>：</span></div>
 <div id="questionBox" class="text">{{Question}}</div>
 
@@ -130,11 +130,11 @@ classifyText.innerText = is_single ? "Single Choice" : "Multiple Choices";
 for(let ii = 0; ii !== optionList.length; ++ii) {
   const i = ii + 0;
   chosenList.push(false);
-  
+
   const checkbox_id = "checkbox-" + i;
   const li = document.createElement("li");
   liList.push(li);
-  
+
   const check = document.createElement("input");
   check.type = is_single ? "radio" : "checkbox";
   check.id = checkbox_id;
@@ -147,14 +147,14 @@ for(let ii = 0; ii !== optionList.length; ++ii) {
     }
     chosenList[i] = this.checked;
   };
-  
+
   const label = document.createElement("label");
   label.htmlFor = checkbox_id;
   label.innerText = optionList[i];
-  
+
   li.appendChild(check);
   li.appendChild(label);
-  
+
   optionBox.appendChild(li);
 }
 
@@ -191,7 +191,7 @@ submitButton.onclick = onSubmit;
 </script>
 """
 
-BACK = """<!--tuxzz.20201115.v0.r0-->
+BACK = r"""<!--tuxzz.20201115.v0.r0-->
 <div id="classifyBox" class="classify"><span id="classifyText"></span><span>：</span></div>
 <div id="questionBox" class="text">{{Question}}</div>
 
@@ -232,7 +232,7 @@ function pseudo_shuffle_inplace(l) {
     l[idx] = t;
     currLen -= 1;
   }
-  
+
   return l;
 }
 
@@ -291,11 +291,11 @@ classifyText.innerText = is_single ? "Single Choice" : "Multiple Choices";
 for(let ii = 0; ii !== optionList.length; ++ii) {
   const i = ii + 0;
   chosenList.push(false);
-  
+
   const checkbox_id = "checkbox-" + i;
   const li = document.createElement("li");
   liList.push(li);
-  
+
   const check = document.createElement("input");
   check.type = is_single ? "radio" : "checkbox";
   check.id = checkbox_id;
@@ -308,14 +308,14 @@ for(let ii = 0; ii !== optionList.length; ++ii) {
     }
     chosenList[i] = this.checked;
   };
-  
+
   const label = document.createElement("label");
   label.htmlFor = checkbox_id;
   label.innerText = optionList[i];
-  
+
   li.appendChild(check);
   li.appendChild(label);
-  
+
   optionBox.appendChild(li);
 }
 

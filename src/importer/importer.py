@@ -1,7 +1,7 @@
 import datetime
 from . import config
 from . import notetype_loader as loader
-from .helper.formatHelper import list2str
+from .helper.formatHelper import list2str, linestrip
 
 
 def HandleNote(text: str, noteList: list) -> str:
@@ -28,6 +28,7 @@ details:
 
 
 def HandlePost(text: str):
+    text = linestrip(text, left=False, right=True)
     notes = text.split("\n\n")
     f = open("log.txt", "a+", encoding="utf-8")
     f.write("\n" + datetime.datetime.now().strftime("%c") + "\n")

@@ -39,7 +39,7 @@ def get(text: str, tags: list = []) -> Note:
     return ClozeNote(output, _tags=tags)
 
 
-CSS = """.card {
+CSS = r""".card {
   font-family: arial;
   font-size: 20px;
   text-align: center;

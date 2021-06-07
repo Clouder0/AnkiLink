@@ -31,11 +31,11 @@ def markdown2html(text):
 
 def linestrip(text, left=True, right=True):
     lines = text.splitlines()
-    for x in lines:
+    for i in range(len(lines)):
         if left:
-            x = x.lstrip()
+            lines[i] = lines[i].lstrip()
         if right:
-            x = x.rstrip()
+            lines[i] = lines[i].rstrip()
     return list2str(lines)
 
 
@@ -105,7 +105,7 @@ def lineTweaks(lines: list) -> str:
 
 
 def formatText(text):
-    lines = [x.rstrip() for x in text.splitlines()]
+    lines = text.splitlines()
 
     if len(lines) <= 0:
         return ""

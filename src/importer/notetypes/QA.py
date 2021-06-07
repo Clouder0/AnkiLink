@@ -23,11 +23,11 @@ def get(text, tags):
     return QANote(front, back, _tags=tags)
 
 
-BACK = """{{FrontSide}}
+BACK = r"""{{FrontSide}}
 <hr id=answer>
 {{Back}}"""
 
-CSS = """.card {
+CSS = r""".card {
   font-family: arial;
   font-size: 20px;
   text-align: center;
