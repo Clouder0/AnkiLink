@@ -18,7 +18,7 @@ help_info = {
 parser = argparse.ArgumentParser(
     description="Anki Importer. A handy tool to import your plain text files into Anki.")
 parser.add_argument("-v", "--version", action="version",
-                    version="Anki Importer v{}".format(version_name))
+                    version="AnkiLink v{}".format(version_name))
 parser.add_argument("filename", metavar="filename", nargs="+",
                     help=help_info["filename"])
 parser.add_argument("-d", "--deckname", metavar="deckname", nargs="?", default=deck_name,
