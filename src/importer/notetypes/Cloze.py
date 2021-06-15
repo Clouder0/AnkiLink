@@ -18,7 +18,7 @@ def get(text: str, tags: list = []) -> Note:
     # odd indexes are clozes
     pid = 0
     for i, x in enumerate(sub):
-        if(i % 2 == 1):
+        if (i % 2 == 1):
             id = pid + 1
             try:
                 if x.startswith(clozeNumberPrefix):
@@ -35,7 +35,7 @@ def get(text: str, tags: list = []) -> Note:
                 if id == pid + 1:
                     pid = id
         else:
-            output = output + x
+            output += x
     return ClozeNote(output, _tags=tags)
 
 

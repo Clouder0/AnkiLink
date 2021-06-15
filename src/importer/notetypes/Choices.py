@@ -13,7 +13,7 @@ def check(lines):
 def get(text, tags):
     lines = text.split("\n")
     question = lines[0]
-    options = list()
+    options = []
     remark = ""
     i = 1
     while i < len(lines):
@@ -24,11 +24,10 @@ def get(text, tags):
     if len(options) <= 1:
         raise Exception("Error! Choices with only one option.")
     options = list2str(options)
-    if i < len(lines):
-        answer = list2str([x for x in lines[i] if ord(x) >= 65 and ord(x) <= 90], "", "")
-        i += 1
-    else:
+    if i >= len(lines):
         raise Exception("Error! Choices with no answer.")
+    answer = list2str([x for x in lines[i] if ord(x) >= 65 and ord(x) <= 90], "", "")
+    i += 1
     if i < len(lines):
         remark = list2str(lines[i:])
     return ChoicesNote(question, options, answer, remark, _tags=tags)
