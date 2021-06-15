@@ -9,12 +9,14 @@ def getNote(mynote):
 def getModel(mymodel):
     return genanki.Model(
         model_id=mymodel.modelId,
-        name="G" + mymodel.modelName,  # avoid duplicating
-        fields=list([{"name": x} for x in mymodel.fields]),
-        templates=[{"name": x["Name"], "qfmt":x["Front"], "afmt":x["Back"]}
-                   for x in mymodel.templates],
+        name="G" + mymodel.modelName,
+        fields=[{"name": x} for x in mymodel.fields],
+        templates=[
+            {"name": x["Name"], "qfmt": x["Front"], "afmt": x["Back"]}
+            for x in mymodel.templates
+        ],
         model_type=mymodel.isCloze,
-        css=mymodel.css
+        css=mymodel.css,
     )
 
 

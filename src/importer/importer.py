@@ -30,10 +30,9 @@ details:
 def HandlePost(text: str):
     text = linestrip(text, left=False, right=True)
     notes = text.split("\n\n")
-    f = open("log.txt", "a+", encoding="utf-8")
-    f.write("\n" + datetime.datetime.now().strftime("%c") + "\n")
-    noteList = []
-    for note in notes:
-        f.write("\n{}\n".format(list2str(HandleNote(note, noteList))))
-    f.close()
+    with open("log.txt", "a+", encoding="utf-8") as f:
+        f.write("\n" + datetime.datetime.now().strftime("%c") + "\n")
+        noteList = []
+        for note in notes:
+            f.write("\n{}\n".format(list2str(HandleNote(note, noteList))))
     return noteList
