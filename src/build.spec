@@ -5,10 +5,10 @@ block_cipher = None
 
 
 a = Analysis(['cli.py'],
-             pathex=['./importer/', './importer/notetypes/', './', 'C:\\Users\\Clouder\\Documents\\AnkiLink\\src'],
+             pathex=['./AnkiIn/', './AnkiIn/notetypes/', './', 'C:\\Users\\Clouder\\Documents\\AnkiLink\\src'],
              binaries=[],
              datas=[],
-             hiddenimports=['importer.notetypes'],
+             hiddenimports=['AnkiIn.notetypes'],
              hookspath=[],
              runtime_hooks=[],
              excludes=[],
