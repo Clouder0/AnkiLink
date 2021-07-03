@@ -1,14 +1,7 @@
 log.txt
-src/__pycache__/**
-src/importer/__pycache__/**
-src/importer/helper/__pycache__/**
-src/importer/notetypes/__pycache__/**
-src/importer/notetype/__pycache__/**
-src/importer/helper/__pycache__/**
+__pycache__/
 build/**
 dist/**
-src/build/**
-src/dist/**
 test.py
-env/**
-test.apkg
+env/
+AnkiLink
