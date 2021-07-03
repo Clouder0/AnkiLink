@@ -43,6 +43,6 @@ def parse():
     config.tags = args.tags
     config.file_list = args.filename
     config.output = "-o" in sys.argv or "--output" in sys.argv
-    config.outputpath = args.output
+    config.output_path = args.output
     enable_log_file()
     config.complete_config()

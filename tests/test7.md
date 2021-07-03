@@ -3,7 +3,7 @@
 ## Heading 1
 
 [config]  
-deck_name = Export  
+deck_name = Export2  
 tags = [test1,test2]
 
 Q.  

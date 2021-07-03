@@ -1,6 +1,6 @@
 import sys
 import os
-from AnkiIn.helper.genankiHelper import get_deck, export_deck
+from AnkiIn.helper.genankiHelper import export_notes
 from AnkiIn.helper.ankiConnectHelper import add_notes, check_online
 from AnkiIn.helper.formatHelper import get_title, remove_suffix
 from AnkiIn import config
@@ -25,23 +25,24 @@ def execute_from_commandline():
         noteLists += noteList
         print("Done.")
     if config.output is False:
-        add_notes(noteLists, config.deck_name)
+        add_notes(noteLists)
     else:
-        if config.outputpath is None:
-            config.outputpath = ""
+        if config.output_path is None:
+            config.output_path = ""
 
             def getRaw(name: str) -> str:
                 ret = os.path.basename(name)
                 return ret[:ret.find(".")] if "." in ret else ret
+
             if len(config.file_list) > 1:
                 for i, x in enumerate(config.file_list):
-                    config.outputpath += (titles[i] if titles[i] is not None else getRaw(x)) + "_"
-                config.outputpath = remove_suffix(config.outputpath, "_")
+                    config.output_path += (titles[i] if titles[i] is not None else getRaw(x)) + "_"
+                config.output_path = remove_suffix(config.output_path, "_")
             else:
-                config.outputpath = titles[0] if titles[0] is not None else getRaw(config.file_list[0])
-            config.outputpath += ".apkg"
-            print("No filename provided. Exporting to " + config.outputpath)
-        export_deck(get_deck(config.deck_name, noteLists), config.outputpath)
+                config.output_path = titles[0] if titles[0] is not None else getRaw(config.file_list[0])
+            config.output_path += ".apkg"
+            print("No filename provided. Exporting to " + config.output_path)
+        export_notes(noteLists, config.output_path)
     print("All done.")
 
 
