@@ -8,6 +8,8 @@
 [![Contributors][contributors-shield]][contributors-url]
 [![CodeFactor][codefactor-shield]][codefactor-url]
 
+See [AnkiLink Project](https://github.com/users/Clouder0/projects/1) for future plans.
+
 ## Introduction
 
 **ATTENTION: This tool is for users, if you are a developer, please visit [AnkiIn](https://github.com/Clouder0/AnkiIn).**
