@@ -8,6 +8,8 @@
 [![Contributors][contributors-shield]][contributors-url]
 [![CodeFactor][codefactor-shield]][codefactor-url]
 
+查看 [AnkiLink 项目](https://github.com/users/Clouder0/projects/1) 了解未来计划。
+
 ## Introduction
 
 **注意：该工具面向用户，如果你是开发者，请访问[AnkiIn](https://github.com/Clouder0/AnkiIn).**
