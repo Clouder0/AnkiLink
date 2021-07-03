@@ -10,6 +10,8 @@
 
 ## Introduction
 
+**ATTENTION: This tool is for users, if you are a developer, please visit [AnkiIn](https://github.com/Clouder0/AnkiIn).**
+
 AnkiLink enables you to import Anki notes directly from your markdown files. It is simple, easy to use yet that powerful.
 
 There are tons of Anki Importers in the world, while this one features minimalism.
@@ -244,10 +246,12 @@ Tons of AnkiLinks out there. Here are some alternatives, some of which may suit 
 
 - [apy](https://github.com/lervag/apy): need to install Anki source, directly write to Anki database without opening Anki or importing apkg into Anki. Linux-friendly.
 - [Anki-Import](https://github.com/sdondley/Anki-Import): similar syntax with my AnkiLink but too many linebreaks. Lack of markdown support. Haven't been updated for years.
-- [inka](https://github.com/lazy-void/inka): a powerful tool, and the most similar one with mine. I would probably not start this project if I had discovered it earlier! we are developing in different directions though.
+- [inka](https://github.com/lazy-void/inka): yet another powerful tool.
+- [Obsidian_to_Anki](https://github.com/Pseudonium/Obsidian_to_Anki): a mature solution, almost what I want.
 
 ## Credit
 
+- [AnkiIn](https://github.com/Clouder0/AnkiIn)
 - [anki](https://github.com/ankitects/anki)
 - [anki-connect](https://github.com/FooSoft/anki-connect)
 - [genanki](https://github.com/kerrickstaley/genanki)

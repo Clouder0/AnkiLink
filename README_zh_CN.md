@@ -10,6 +10,8 @@
 
 ## Introduction
 
+**注意：该工具面向用户，如果你是开发者，请访问[AnkiIn](https://github.com/Clouder0/AnkiIn).**
+
 AnkiLink 能将你的 markdown 语法文本导入到 Anki 中。  
 简单而强大的小工具。
 
@@ -241,6 +243,7 @@ A funny feature.
 
 ## Credit
 
+- [AnkiIn](https://github.com/Clouder0/AnkiIn)
 - [anki](https://github.com/ankitects/anki)
 - [anki-connect](https://github.com/FooSoft/anki-connect)
 - [genanki](https://github.com/kerrickstaley/genanki)
