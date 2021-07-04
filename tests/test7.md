@@ -3,14 +3,14 @@
 ## Heading 1
 
 [config]  
-deck_name = Export2  
-tags = [test1,test2]
+deck_name = "Export2"  
+tags = ["test1","test2"]
 
 Q.  
 A.
 
 [inlineconfig]  
-tags = [inline,config]  
+tags = ["inline","config"]  
 [/inlineconfig]  
 Inline config is possible.  
 This would only affect the current block.
@@ -24,7 +24,7 @@ The config will only affect the blocks under it having the same ancestor.
 That's implemented by a Depth-First Search.
 
 [config]  
-tags = [test3,test4]
+tags = ["test3","test4"]
 
 Overriding is **possible**.
 
@@ -36,14 +36,14 @@ And cards here would be affected too.
 Hmm.
 
 [inlineconfig]  
-skip = True  
+skip = true  
 [/inlineconfig]  
 skip this block!
 
 [inlineconfig]  
 skip = true  
 [/inlineconfig]  
-case not sensitive.
+please use lowercase.
 
 [config]  
 skip = true
@@ -57,7 +57,7 @@ And when we exit this heading, the config will be reverted.
 ## Heading 4
 
 [config]  
-tags = [test5]
+tags = ["test5"]
 
 Old time returns.  
 Here we are.
@@ -66,3 +66,15 @@ Here we are.
 mathjax = false  
 [/inlineconfig]  
 $100 free of **mathjax**!
+
+#THIS won't be recognized as a heading when being parsed.
+interesting right? Avoid this improper syntax.
+
+[config]
+[notetype.Cloze]
+clozePrefix = "\\("
+clozeSuffix = "\\)"
+clozeNumberPrefix = "\\{"
+clozeNumberSuffix = "\\}"
+
+Special (Cloze) and ({1}Numbering).

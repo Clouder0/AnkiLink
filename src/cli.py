@@ -4,8 +4,10 @@ from AnkiIn.helper.genankiHelper import export_notes
 from AnkiIn.helper.ankiConnectHelper import add_notes, check_online
 from AnkiIn.helper.formatHelper import get_title, remove_suffix
 from AnkiIn import config
+from AnkiIn.config import dict as conf
 from AnkiIn.parser import markdown as markdown_parser
 import config_parser
+import config
 
 
 def execute_from_commandline():
@@ -24,7 +26,7 @@ def execute_from_commandline():
         f.close()
         noteLists += noteList
         print("Done.")
-    if config.output is False:
+    if not config.output:
         add_notes(noteLists)
     else:
         if config.output_path is None:
@@ -36,10 +38,12 @@ def execute_from_commandline():
 
             if len(config.file_list) > 1:
                 for i, x in enumerate(config.file_list):
-                    config.output_path += (titles[i] if titles[i] is not None else getRaw(x)) + "_"
+                    config.output_path += (titles[i] if titles[i]
+                                            is not None else getRaw(x)) + "_"
                 config.output_path = remove_suffix(config.output_path, "_")
             else:
-                config.output_path = titles[0] if titles[0] is not None else getRaw(config.file_list[0])
+                config.output_path = titles[0] if titles[0] is not None else getRaw(
+                    config.file_list[0])
             config.output_path += ".apkg"
             print("No filename provided. Exporting to " + config.output_path)
         export_notes(noteLists, config.output_path)
