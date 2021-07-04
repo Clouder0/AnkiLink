@@ -16,3 +16,11 @@ Answer
 !Question3
 !Question4
 Answer
+
+[inlineconfig]
+[notetype.MQA]
+prefix = ":"
+[/inlineconfig]
+:Question
+:Question2
+Answer

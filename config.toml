@@ -22,6 +22,7 @@ clozeNumberSuffix = "\\]"
 [notetype.TableCloze]
 
 [notetype.MQA]
+prefix = "!"
 
 [log_config.loggers.main]
 level = "DEBUG"
@@ -46,7 +47,7 @@ class = "logging.StreamHandler"
 stream = "ext://sys.stdout"
 
 [log_config.handlers.log_file]
-level = "DEBUG"
+level = "INFO"
 formatter = "standard"
 class = "logging.FileHandler"
 filename = "log.txt"
