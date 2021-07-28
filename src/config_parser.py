@@ -17,14 +17,14 @@ help_info = {
 }
 
 parser = argparse.ArgumentParser(
-    description="Anki Importer. A handy tool to import your plain text files into Anki.")
+    description="AnkiLink. A handy tool to import your markdown files into Anki.")
 parser.add_argument("-v", "--version", action="version",
                     version="Anki Importer v{}".format(version_name))
 parser.add_argument("filename", metavar="filename", nargs="+",
                     help=help_info["filename"])
-parser.add_argument("-d", "--deckname", metavar="deckname", nargs="+", default=conf["deck_name"],
+parser.add_argument("-d", "--deckname", metavar="deckname", default=conf["deck_name"],
                     help=help_info["deckname"])
-parser.add_argument("-c", "--config", metavar="config", nargs="+", default=config.config_path,
+parser.add_argument("-c", "--config", metavar="config", default=config.config_path,
                     help=help_info["config"])
 parser.add_argument("-t", "--tags", metavar="tags", nargs="*", default=conf["tags"],
                     help=help_info["tags"])

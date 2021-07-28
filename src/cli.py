@@ -39,7 +39,7 @@ def execute_from_commandline():
             if len(config.file_list) > 1:
                 for i, x in enumerate(config.file_list):
                     config.output_path += (titles[i] if titles[i]
-                                            is not None else getRaw(x)) + "_"
+                                           is not None else getRaw(x)) + "_"
                 config.output_path = remove_suffix(config.output_path, "_")
             else:
                 config.output_path = titles[0] if titles[0] is not None else getRaw(
