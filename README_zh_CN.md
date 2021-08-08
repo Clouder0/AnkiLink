@@ -81,7 +81,7 @@ Code:`2055492159`
 
 方法二（推荐）：在 [Releases](https://github.com/Clouder0/AnkiLink/release) 中下载二进制版本，不需要 Python 环境，开箱即用。
 
-### 导入测试牌组
+### 导入测试牌组(现在已经无需此步骤，请跳过)
 
 这一步的意义在于，将几个内置的 Note 类型导入到 Anki 中。  
 

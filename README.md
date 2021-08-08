@@ -79,7 +79,7 @@ Method 1: directly download the `src` folder.
 
 Method 2: download binary release [here](https://github.com/Clouder0/AnkiLink/releases), which doesn't require a python environment and is ready-to-use.
 
-### import ExampleDeck
+### import ExampleDeck(abolished, please skip this step)
 
 This step is necessary because several Note Types are included in the deck.
 
