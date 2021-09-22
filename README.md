@@ -8,6 +8,8 @@
 [![Contributors][contributors-shield]][contributors-url]
 [![CodeFactor][codefactor-shield]][codefactor-url]
 
+**I've switched to a Personal Knowledge Management Application(SiYuan Note) and made a Anki-sync tool for that.([AnkiSiyuan](https://www.github.com/clouder0/AnkiSiyuan)). As a consequence, this tool won't be actively developed. However, it has been mature to some extent so don't fear trying. Feel free to report an issue if you encounter a bug.**
+
 See [AnkiLink Project](https://github.com/users/Clouder0/projects/1) for future plans.
 
 ## Introduction
